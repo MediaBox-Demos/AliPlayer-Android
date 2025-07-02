@@ -1,0 +1,9 @@
+*.idea/
+*.vscode/
+log/
+*.log
+*.json
+out/
+outZip/
+test.*
+AliPlayer-Android-OpenSource/
