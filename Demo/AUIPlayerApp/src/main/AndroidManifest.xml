@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.aliyun.auiplayerapp">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <application
+        android:name=".PlayerApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:supportsRtl="true"
+        android:theme="@style/BaseAppTheme">
+
+        <activity
+            android:name=".PlayerMainActivity"
+            android:alwaysRetainTaskState="true"
+            android:clearTaskOnLaunch="false"
+            android:configChanges="orientation"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".AUIPlayerAppMainActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <!--    配置license    -->
+        <!--    接入 License：https://help.aliyun.com/zh/apsara-video-sdk/user-guide/access-to-license     -->
+        <!--    Configuring the license    -->
+        <!--    Bind a license：https://www.alibabacloud.com/help/en/apsara-video-sdk/user-guide/access-to-license     -->
+        <meta-data
+            android:name="com.aliyun.alivc_license.licensekey"
+            android:value="no80rm6m8ayTXNTk80637a6cdef2a482588e104c17b8993c7" />
+        <meta-data
+            android:name="com.aliyun.alivc_license.licensefile"
+            android:value="assets/cert/license.crt" />
+
+    </application>
+
+</manifest>

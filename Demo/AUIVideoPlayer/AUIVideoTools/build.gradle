@@ -1,0 +1,60 @@
+plugins {
+    id 'com.android.library'
+}
+
+android {
+
+    compileSdkVersion androidCompileSdkVersion
+    buildToolsVersion androidBuildToolsVersion
+
+    defaultConfig {
+        minSdkVersion androidMinSdkVersion
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    api project(':AUIPlayerServer')
+    api project(':AUIVideoCommon:common')
+    api project(':AUIVideoCommon:database')
+    api project(':AUIVideoCommon:AliyunPlayerBase')
+    api project(':AUIVideoCommon:AlivcPlayerTools')
+    //弹幕
+    api 'com.github.ctiao:DanmakuFlameMaster:0.9.25'
+
+    api externalAndroidX
+    api externalAndroidDesign
+
+    api externalPlayerFull
+    api externalAliyunOSS
+    api externalGSON
+    api externalEventBus
+    api externalGlide
+
+    //投屏相关
+    // Cling library
+    api 'com.aliyun.video:cling-core:2.1.1'
+    api 'com.aliyun.video:cling-support:2.1.1'
+    api 'com.aliyun.video:seamless-util:1.1.2'
+    // Jetty library
+    api 'org.eclipse.jetty:jetty-server:9.4.9.v20180320'
+    api 'org.eclipse.jetty:jetty-servlet:9.4.9.v20180320'
+    api 'org.eclipse.jetty:jetty-client:9.4.9.v20180320'
+    api 'org.slf4j:slf4j-simple:1.7.21'
+    api 'com.koushikdutta.urlimageviewhelper:urlimageviewhelper:1.0.4'
+
+    api 'jp.wasabeef:blurry:4.0.0'
+}

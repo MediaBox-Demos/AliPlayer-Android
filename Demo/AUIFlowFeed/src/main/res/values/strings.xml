@@ -1,0 +1,20 @@
+<resources>
+    <string name="aui_flow_feed_title">Information Streaming</string>
+    <string name="aui_flow_feed_video_detail">Video Details</string>
+
+    <string name="recommend_title">Recommendations</string>
+
+    <string name="default_video_title">Default Title - Alibaba Cloud Video Display</string>
+    <string name="default_author_name">Default Alias - Alibaba Cloud</string>
+    <string name="definition">Definition</string>
+    <string name="play_detail">Detail</string>
+    <string name="play_speed_changed">Switched to %1$s speed</string>
+
+    <string name="request_float_window_permission">The use of the floating window function requires the authorization of the floating window permission.</string>
+    <string name="open_permission">Open permission </string>
+    <string name="request_small_window_permission">Small window play requires system permissions</string>
+    <string name="to_cancel">Cancel</string>
+    <string name="loose_delete">Loose to delete</string>
+    <string name="remove_float_window">Remove float window</string>
+    <string name="default_nickname">Default username: Nicholas</string>
+</resources>

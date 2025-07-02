@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    You do not have the read permissions on the file. Obtain the permissions first.
+    <string name="alivc_common_no_camera_permission">You do not have the camera permissions on the file. Obtain the permissions first.</string>
+    <string name="alivc_common_no_record_bluetooth_permission">You do not have the Bluetooth permissions on the file. Obtain the permissions first.</string>
+    <string name="alivc_common_no_record_audio_permission">You do not have the recording permissions on the file. Obtain the permissions first.</string>
+    <string name="alivc_common_no_read_phone_state_permission">You do not have the read user data permissions on the file. Obtain the permissions first.</string>
+    <string name="alivc_common_no_write_external_storage_permission">You do not have the write permissions on the file. Obtain the permissions first.</string>
+    <string name="alivc_common_no_read_external_storage_permission">You do not have the read permissions on the file. Obtain the permissions first.</string>
+    <string name="list_empty_tip">Empty list.</string>
+
+    <string name="aui_feed_flow_refresh_footer_load_more_with_no_data">一 I have a bottom line 一</string>
+
+</resources>

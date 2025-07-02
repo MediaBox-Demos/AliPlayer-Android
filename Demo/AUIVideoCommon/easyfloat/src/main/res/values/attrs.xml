@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+
+    <!--圆弧进度条  circular progress bar -->
+    <declare-styleable name="TasksCompletedView">
+        <!--内圆半径  inner radius (of a circle) -->
+        <attr name="radius" format="dimension" />
+        <!--内圆颜色 Inner Circle Color -->
+        <attr name="circleColor" format="color" />
+        <!--进度条宽度 Progress bar width -->
+        <attr name="progressWidth" format="dimension" />
+        <!--进度条颜色 Progress bar color -->
+        <attr name="progressColor" format="color" />
+        <!--进度条背景色-->
+        <!--Progress bar background color-->
+        <attr name="progressBgColor" format="color" />
+        <!--进度条中间的文字-->
+        <!--Text in the middle of the progress bar-->
+        <attr name="progressText" format="string" />
+        <!--进度条中间的文字大小-->
+        <!--Text size in the middle of the progress bar-->
+        <attr name="progressTextSize" format="dimension" />
+        <!--进度条中间的文字颜色-->
+        <!--Text color in the middle of the progress bar-->
+        <attr name="progressTextColor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="CircleLoadingView">
+        <!--圆弧宽度-->
+        <!--Arc width-->
+        <attr name="arcWidth" format="dimension" />
+        <!--加载动画的颜色-->
+        <!--Loading animation color-->
+        <attr name="loadingColor" format="color" />
+        <!--环形圆点的数量-->
+        <!--Number of circular points-->
+        <attr name="dotSize" format="integer" />
+        <!--圆环转动一周的时间-->
+        <!--Time it takes for the circle to rotate one complete revolution-->
+        <attr name="durationTime" format="float" />
+        <!--每周期圆点旋转的角度-->
+        <!--Angle of rotation of each point in a cycle-->
+        <attr name="dotAngle" format="float" />
+    </declare-styleable>
+
+    <declare-styleable name="DefaultCloseView">
+        <!--区域默认颜色-->
+        <!--Default color of the area-->
+        <attr name="normalColor" format="color" />
+        <!--区域选中颜色-->
+        <!--Selected color of the area-->
+        <attr name="inRangeColor" format="color" />
+        <!--区域形状-->
+        <!--Shape of the area-->
+        <attr name="shapeType" format="enum">
+            <enum name="oval" value="0" />
+            <enum name="rect" value="1" />
+            <enum name="circle" value="2" />
+        </attr>
+        <!--选中切换时的缩放大小-->
+        <!--Zoom size during selection change-->
+        <attr name="zoomSize" format="dimension" />
+    </declare-styleable>
+
+</resources>

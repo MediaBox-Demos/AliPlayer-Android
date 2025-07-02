@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">EasyFloat</string>
+    <string name="add_floating_window">浮窗</string>
+    <string name="delete_floating_window">删除浮窗</string>
+    <string name="float_window_error">浮窗关闭出现异常：%1$s</string>
+    <string name="failed_setup_page">进入设置页面失败，请手动设置</string>
+</resources>

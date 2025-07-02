@@ -1,0 +1,31 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion externalCompileSdkVersion
+
+    defaultConfig {
+        minSdkVersion externalMinSdkVersion
+        targetSdkVersion externalTargetSdkVersion
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    api project(':AUIVideoCommon:common')
+
+    api externalGSON
+    api externalOKHTTP
+    api externalAndroidX
+    api externalAndroidDesign
+    api 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
+
+    implementation(externalGlide) {
+        exclude group: "com.android.support"
+    }
+}

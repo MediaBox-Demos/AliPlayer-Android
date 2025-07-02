@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">AlivcPlayer</string>
+
+    <!--  aio  -->
+    <string name="player_title">Player</string>
+    <string name="player_feed_flow">Information Streaming</string>
+    <string name="player_video_list">Immersive Playback</string>
+    <string name="player_full_screen">Full-screen Playback</string>
+    <string name="player_episode">Short Episode Playback</string>
+    <string name="player_custom">Custom</string>
+    <string name="player_video">Video Playback</string>
+
+    <!--    -->
+    <string name="player_feed_flow_msg">Suitable for short video scenarios such as news broadcast and community activities.</string>
+    <string name="player_feed_flow_function_msg">Vertical screen short video scene，Best practices for full screen second on</string>
+    <string name="player_feed_flow_standard_msg">Vertical screen short video scene, standard implementation</string>
+    <string name="player_video_list_msg">Suitable for short video scenarios in which you can switch among multiple videos.</string>
+    <string name="player_video_full_screen_msg">Suitable for copyrighted long video scenarios.</string>
+    <string name="player_video_episode_msg">Suitable for short video scenarios in which you can switch among multiple videos.</string>
+    <string name="player_video_params_msg">Suitable for playback with various parameters</string>
+
+    <string name="alivc_common_no_read_external_storage_permission">You do not have the read permissions on the file. Obtain the permissions first.</string>
+    <string name="alivc_common_no_write_external_storage_permission">You do not have the write permissions on the file. Obtain the permissions first.</string>
+    <string name="alivc_recorder_camera_permission_tip">Obtain the camera and storage permissions.</string>
+</resources>

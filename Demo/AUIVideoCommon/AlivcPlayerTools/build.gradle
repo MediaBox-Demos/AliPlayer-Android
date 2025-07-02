@@ -1,0 +1,59 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion externalCompileSdkVersion
+
+    defaultConfig {
+        minSdkVersion externalMinSdkVersion
+        targetSdkVersion externalTargetSdkVersion
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    buildFeatures {
+        viewBinding true
+    }
+
+    androidExtensions {
+        experimental = true
+    }
+}
+
+dependencies {
+    implementation project(':AUIPlayerServer')
+    implementation project(':AUIVideoCommon:common')
+    implementation project(':AUIVideoCommon:database')
+    implementation project(':AUIVideoCommon:AliyunPlayerBase')
+
+    //弹幕 danmaku
+    implementation 'com.github.ctiao:DanmakuFlameMaster:0.9.25'
+
+    implementation externalAndroidX
+    implementation externalAndroidDesign
+
+    implementation externalPlayerFull
+    implementation externalAliyunOSS
+    implementation externalGSON
+    implementation externalEventBus
+    implementation externalGlide
+
+    //投屏相关 casting related
+    // Cling library
+    implementation 'com.aliyun.video:cling-core:2.1.1'
+    implementation 'com.aliyun.video:cling-support:2.1.1'
+    implementation 'com.aliyun.video:seamless-util:1.1.2'
+    // Jetty library
+    implementation 'org.eclipse.jetty:jetty-server:9.4.9.v20180320'
+    implementation 'org.eclipse.jetty:jetty-servlet:9.4.9.v20180320'
+    implementation 'org.eclipse.jetty:jetty-client:9.4.9.v20180320'
+    implementation 'org.slf4j:slf4j-simple:1.7.21'
+    implementation 'com.koushikdutta.urlimageviewhelper:urlimageviewhelper:1.0.4'
+
+    implementation 'jp.wasabeef:blurry:4.0.0'
+}

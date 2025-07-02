@@ -1,0 +1,19 @@
+dependencies {
+    implementation externalAndroidXAppcompat
+    implementation externalAndroidDesign
+    implementation externalAndroidXConstraintlayout
+
+    implementation externalARouter
+    annotationProcessor externalARouterCompiler
+    implementation externalRtsSDK
+
+    implementation externalGSON
+    implementation externalAndroidMultiDex
+
+    implementation project(':AUIFlowFeed')
+    implementation project(':AUIFullScreen')
+    implementation project(':AUIVideoList:AUIVideoFunctionList')
+    implementation project(':AUIVideoList:AUIVideoStandradList')
+    implementation project(':AUIVideoList:AUIVideoEpisode')
+    implementation project(':AUIVideoPlayer:AUIVideoDemo')
+}

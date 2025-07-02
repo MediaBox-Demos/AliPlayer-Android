@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">EasyFloat</string>
+    <string name="add_floating_window">Floating Window</string>
+    <string name="delete_floating_window">Delete Floating Window</string>
+    <string name="float_window_error">Float Window Error：%1$s</string>
+    <string name="failed_setup_page">Failed to enter setup page, please setup manually</string>
+</resources>

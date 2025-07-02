@@ -1,0 +1,89 @@
+import java.text.SimpleDateFormat
+
+apply plugin: 'com.android.application'
+apply from: './dependencies.gradle'
+
+ext.MTL_buildId = getEnvValue("MUPP_BUILD_ID", 'localbuild')
+ext.MTL_buildTimestamp = new SimpleDateFormat("yyMMddHHmmss").format(new Date())
+
+//@keria:cannot make method static
+String getEnvValue(key, defValue) {
+    def val = System.getProperty(key)
+    if (null != val) {
+        return val
+    }
+    val = System.getenv(key)
+    if (null != val) {
+        return val
+    }
+    return defValue
+}
+
+android {
+    compileSdkVersion androidCompileSdkVersion
+    buildToolsVersion androidBuildToolsVersion
+    defaultConfig {
+        applicationId "com.aliyun.auiplayerapp"
+        namespace "com.aliyun.auiplayerapp"
+        minSdkVersion androidMinSdkVersion
+        targetSdkVersion androidTargetSdkVersion
+
+        versionCode 1
+        versionName "1.0"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: 'player']
+            }
+        }
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("$rootDir/release.keystore")
+            storePassword "123456"
+            keyAlias "animoji"
+            keyPassword "123456"
+        }
+    }
+
+    buildTypes {
+        all {
+            buildConfigField "String", "MTL_BUILD_ID", "\"${MTL_buildId}\""
+            buildConfigField "String", "MTL_BUILD_TIMESTAMP", "\"${MTL_buildTimestamp}\""
+        }
+        release {
+            signingConfig signingConfigs.release
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/beans.xml'
+        pickFirst 'lib/arm64-v8a/libalivcffmpeg.so'
+        pickFirst 'lib/armeabi-v7a/libalivcffmpeg.so'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            outputFileName = "${project.name}-${variant.buildType.name}-${MTL_buildId}.apk"
+        }
+    }
+}

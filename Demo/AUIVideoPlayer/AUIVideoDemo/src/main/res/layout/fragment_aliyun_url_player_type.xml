@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/alivc_common_margin_20"
+    android:paddingRight="@dimen/alivc_common_margin_20">
+
+    <TextView
+        android:id="@+id/tv_url_player_type_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/alivc_player_setting_play_type_url"
+        android:textColor="@color/alivc_common_white"
+        android:textSize="@dimen/alivc_common_font_14" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_qrcode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:padding="@dimen/alivc_common_padding_5"
+            android:src="@drawable/ic_qrcode"/>
+
+        <EditText
+            android:id="@+id/et_url"
+            style="@style/alivc_play_type_edit_text"
+            android:layout_toLeftOf="@id/iv_qrcode"
+            android:text="" />
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,36 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdkVersion androidCompileSdkVersion
+    buildToolsVersion androidBuildToolsVersion
+
+    defaultConfig {
+        minSdkVersion androidMinSdkVersion
+        targetSdkVersion androidTargetSdkVersion
+    }
+}
+
+dependencies {
+
+    implementation externalAndroidDesign
+    testImplementation externalJunit
+    androidTestImplementation externalTestJunit
+    androidTestImplementation externalEspresso
+
+    implementation externalAndroidXAppcompat
+    implementation externalAndroidXConstraintlayout
+    implementation externalPlayerFull
+    implementation externalGlide
+    implementation externalGSON
+
+    implementation project(':AUIPlayerServer')
+    implementation project(':AUIVideoCommon:AlivcPlayerTools')
+    implementation project(':AUIVideoCommon:common')
+}
+repositories {
+    maven {
+        allowInsecureProtocol = true
+        url "http://maven.aliyun.com/repository/central"
+    }
+}
