@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.aliyun.player.downloader">
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <application>
+        <activity
+            android:name=".DownloaderActivity"
+            android:exported="false"
+            android:theme="@style/Theme.MaterialComponents.Light"
+            tools:ignore="AppLinkUrlError">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data
+                    android:host="advanced"
+                    android:path="/downloader"
+                    android:scheme="demo" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

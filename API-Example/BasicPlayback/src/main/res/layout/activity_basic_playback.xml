@@ -5,8 +5,8 @@
     android:background="@color/white">
 
     <!-- 播放器渲染视图 -->
-    <SurfaceView
-        android:id="@+id/surface_view"
+    <com.aliyun.player.videoview.AliDisplayView
+        android:id="@+id/ali_display_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center" />

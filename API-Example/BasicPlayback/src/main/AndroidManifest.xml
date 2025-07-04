@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.aliyun.player.basicplayback">
+    package="com.aliyun.player.playback">
 
     <application>
         <activity
-            android:name=".BasicPlaybackActivity"
+            android:name="com.aliyun.player.playback.BasicPlaybackActivity"
             android:exported="true"
             android:theme="@style/Theme.MaterialComponents.Light">
             <intent-filter>

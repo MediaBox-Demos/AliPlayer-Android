@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="180dp">
+
+    <!-- 播放器渲染视图 -->
+    <com.aliyun.player.videoview.AliDisplayView
+        android:id="@+id/ali_display_view"
+        android:layout_width="match_parent"
+        android:layout_height="180dp" />
+
+    <!-- 关闭悬浮窗按钮 -->
+    <ImageView
+        android:id="@+id/btn_close"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@android:drawable/ic_menu_close_clear_cancel" />
+
+</RelativeLayout>

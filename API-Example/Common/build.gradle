@@ -38,4 +38,7 @@ dependencies {
     def rts_sdk_version = "7.3.0" // 独立版本号，目前最新版本
     api "com.aliyun.rts.android:RtsSDK:$rts_sdk_version"
 
+    // retrofit 用于进行网络请求
+    api 'com.squareup.retrofit2:retrofit:2.1.0'// retrofit
+    api 'com.squareup.retrofit2:converter-gson:2.9.0' // 选择Gson转换器
 }

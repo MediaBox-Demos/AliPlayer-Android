@@ -1,27 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:keepScreenOn="true">
 
-    <RelativeLayout
+    <!-- 播放器渲染视图 -->
+    <com.aliyun.player.videoview.AliDisplayView
+        android:id="@+id/ali_display_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent" />
 
-        <SurfaceView
-            android:id="@+id/surface_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+    <!-- 主动唤出画中画 -->
+    <Button
+        android:id="@+id/btn_pip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="15dp"
+        android:text="@string/pip_active_title" />
 
-        <Button
-            android:id="@+id/btn_pip"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="15dp"
-            android:text="启用画中画" />
-
-    </RelativeLayout>
-
-</FrameLayout>
+</RelativeLayout>

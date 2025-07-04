@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.aliyun.player.pictureinpicture">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.aliyun.player.pictureinpicture">
 
     <application>
         <activity
             android:name=".PictureInPictureActivity"
-            android:resizeableActivity="true"
-            android:supportsPictureInPicture="true"
+            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
             android:exported="true"
             android:launchMode="singleInstance"
-            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
+            android:resizeableActivity="true"
+            android:supportsPictureInPicture="true"
             android:theme="@style/Theme.MaterialComponents.Light">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />

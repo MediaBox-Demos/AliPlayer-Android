@@ -23,15 +23,20 @@ public class MenuConfig {
 
         // 基础功能区
         items.add(MenuItem.createHeader(context.getString(R.string.menu_header_basic)));
-        items.add(MenuItem.createItem(context.getString(R.string.menu_basic_demo_title), Constants.Schema.BASIC_PLAYBACK, context.getString(R.string.menu_basic_demo_desc)));
-        items.add(MenuItem.createItem(context.getString(R.string.menu_rts_demo_title), Constants.Schema.RTS_LIVE_STREAM, context.getString(R.string.menu_rts_demo_desc)));
+        items.add(MenuItem.createItem(context.getString(R.string.menu_basic_playback_title), Constants.Schema.BASIC_PLAYBACK, context.getString(R.string.menu_basic_playback_desc)));
+        items.add(MenuItem.createItem(context.getString(R.string.menu_basic_playback_surface_view_title), Constants.Schema.BASIC_PLAYBACK_SURFACE_VIEW, context.getString(R.string.menu_basic_playback_surface_view_desc)));
+        items.add(MenuItem.createItem(context.getString(R.string.menu_basic_playback_texture_view_title), Constants.Schema.BASIC_PLAYBACK_TEXTURE_VIEW, context.getString(R.string.menu_basic_playback_texture_view_desc)));
+        items.add(MenuItem.createItem(context.getString(R.string.menu_rts_playback_title), Constants.Schema.RTS_LIVE_STREAM, context.getString(R.string.menu_rts_playback_desc)));
 
         // 进阶功能区
         items.add(MenuItem.createHeader(context.getString(R.string.menu_header_advanced)));
-        items.add(MenuItem.createItem(context.getString(R.string.menu_pip_demo_title), Constants.Schema.PICTURE_IN_PICTURE, context.getString(R.string.menu_pip_demo_desc)));
-        items.add(MenuItem.createItem(context.getString(R.string.menu_thumbnail_title), Constants.Schema.THUMBNAIL, context.getString(R.string.menu_basic_demo_desc)));
-
-
+        items.add(MenuItem.createItem(context.getString(R.string.menu_pip_title), Constants.Schema.PICTURE_IN_PICTURE, context.getString(R.string.menu_pip_desc)));
+        items.add(MenuItem.createItem(context.getString(R.string.menu_float_window_title), Constants.Schema.FLOAT_WINDOW_URL, context.getString(R.string.menu_float_window_desc)));
+        items.add(MenuItem.createItem(context.getString(R.string.menu_external_subtitle_title), Constants.Schema.EXTERNAL_SUBTITLE, context.getString(R.string.menu_external_subtitle_desc)));
+        items.add(MenuItem.createItem(context.getString(R.string.menu_thumbnail_title), Constants.Schema.THUMBNAIL, context.getString(R.string.menu_thumbnail_desc)));
+        items.add(MenuItem.createItem(context.getString(R.string.menu_multi_resolution_title), Constants.Schema.MULTI_RESOLUTION, context.getString(R.string.menu_multi_resolution_desc)));
+        items.add(MenuItem.createItem(context.getString(R.string.menu_preload_url_title), Constants.Schema.PRELOAD_URL, context.getString(R.string.menu_preload_url_desc)));
+        items.add(MenuItem.createItem(context.getString(R.string.menu_downloader_title), Constants.Schema.DOWNLOADER, context.getString(R.string.menu_downloader_desc)));
         return items;
     }
 }

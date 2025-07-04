@@ -8,34 +8,50 @@
     <string name="menu_header_advanced">Advanced Features</string>
 
     <!-- Basic Feature Menu Items -->
-    <string name="menu_basic_demo_title">Basic Demo</string>
-    <string name="menu_basic_demo_desc">Demonstrate basic functionality usage</string>
+    <string name="menu_basic_playback_title">Basic Playback</string>
+    <string name="menu_basic_playback_desc">Demonstrates how to implement basic video playback using the ApsaraVideo Player SDK</string>
 
-    <string name="menu_rts_demo_title">RTS Demo</string>
-    <string name="menu_rts_demo_desc">Demonstrate RTS SDK usage</string>
+    <string name="menu_basic_playback_surface_view_title">Basic Playback (SurfaceView)</string>
+    <string name="menu_basic_playback_surface_view_desc">Shows how to implement video playback using SurfaceView</string>
+
+    <string name="menu_basic_playback_texture_view_title">Basic Playback (TextureView)</string>
+    <string name="menu_basic_playback_texture_view_desc">Shows how to implement video playback using TextureView</string>
+
+    <string name="menu_rts_playback_title">RTS Demo</string>
+    <string name="menu_rts_playback_desc">Demonstrate RTS SDK usage</string>
 
     <!-- Advanced Feature Menu Items -->
-    <string name="menu_pip_demo_title">PictureInPicture Demo</string>
-    <string name="menu_pip_demo_desc">Demonstrate PictureInPicture usage</string>
-    <string name="menu_thumbnail_title">Thumbnail Demo</string>
+    <string name="menu_pip_title">PictureInPicture</string>
+    <string name="menu_pip_desc">Demonstrate PictureInPicture usage</string>
+
+    <string name="menu_thumbnail_title">Thumbnail</string>
     <string name="menu_thumbnail_desc">Demonstrate Thumbnail usage</string>
+
+    <string name="menu_external_subtitle_title">ExternalSubtitle</string>
+    <string name="menu_external_subtitle_desc">Demonstrate ExternalSubtitle usage</string>
+
+    <string name="menu_multi_resolution_title">Multi-Resolution</string>
+    <string name="menu_multi_resolution_desc">Demonstrate Multi-resolution usage</string>
+
+    <string name="menu_preload_url_title">Preload</string>
+    <string name="menu_preload_url_desc">Demonstrate Preload usage</string>
+
+    <string name="menu_float_window_title">Float-Window</string>
+    <string name="menu_float_window_desc">Demonstrate Float-Window usage</string>
+
+    <string name="menu_downloader_title">DownLoader</string>
+    <string name="menu_downloader_desc">Demonstrate DownLoader usage</string>
 
     <!-- Common Messages -->
     <string name="schema_not_supported">Feature not implemented yet: %s</string>
+    <string name="set_stream_url_first">Please set the live streaming URL first</string>
+    <string name="playback_not_implemented">Playback function not implemented</string>
+    <string name="preload_complete">Preloading complete. It can improve playback startup speed~</string>
+    <string name="preload_canceled">Preloading canceled</string>
+    <string name="preload_error">Preloading error</string>
 
-    <!-- BasicPlayback Activity Strings -->
-    <string name="basic_playback_demo_title">BasicPlayback</string>
-
-    <!-- ExternalSubtitle Activity Strings -->
-    <string name="external_subtitle_playback_demo_title">ExternalSubTitle</string>
-
-    <!-- RTSLiveStream Activity Strings -->
-    <string name="rts_livestream_demo_title">RTSLiveStream</string>
-
-    <!-- PictureInPicture Activity Strings -->
-    <string name="basic_pip_demo_title">PictureInPicture</string>
-
-    <!-- Thumbnail Activity Strings  -->
-    <string name="thumbnail_demo_title">Thumbnail</string>
     <!--  Common Strings  -->
+    <string name="pip_active_title">Active PiP</string>
+    <string name="float_active_title">Open Floating Window</string>
+
 </resources>

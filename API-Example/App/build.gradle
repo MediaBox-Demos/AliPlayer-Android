@@ -46,4 +46,10 @@ dependencies {
     implementation project(":PictureInPicture")
     implementation project(":RtsLiveStream")
     implementation project(":Thumbnail")
+    implementation project(":MultiResolution")
+    implementation project(":PlaybackSurfaceView")
+    implementation project(":PlaybackTextureView")
+    implementation project(":Preload")
+    implementation project(":FloatWindow")
+    implementation project(":Downloader")
 }

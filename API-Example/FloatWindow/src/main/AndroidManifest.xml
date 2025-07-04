@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.aliyun.player.floatwindow">
+
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.ACTION_MANAGE_OVERLAY_PERMISSION" />
+
+    <application>
+        <activity
+            android:name=".FloatWindowActivity"
+            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
+            android:exported="true"
+            android:theme="@style/Theme.MaterialComponents.Light">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data
+                    android:host="advanced"
+                    android:path="/float-window"
+                    android:scheme="demo" />
+            </intent-filter>
+        </activity>
+
+        <service android:name=".FloatWindowService" />
+    </application>
+</manifest>

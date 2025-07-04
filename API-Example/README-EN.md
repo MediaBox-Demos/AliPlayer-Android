@@ -1,12 +1,12 @@
 Language: [中文简体](README.md) | English
 
-# **API-Example (Java)**
+# **API-Example (Android)**
 
-Aliyun Player SDK Java Sample Project
+ApsaraVideo Player SDK Android Sample Project
 
 ## **📖 Project Overview**
 
-This project is a Java sample for the Aliyun Player SDK, designed to help developers quickly understand and integrate the core functionalities provided by the SDK.
+This project is an Android sample project for the ApsaraVideo Player SDK, written in Java, designed to help developers quickly understand and integrate the core functionalities provided by the SDK.
 
 The project adopts a **modular architecture design**, supports schema-based routing navigation, and offers excellent **extensibility** and **maintainability**.
 
@@ -28,15 +28,25 @@ The project adopts a **modular architecture design**, supports schema-based rout
 
 ## **🏗️ Project Architecture**
 
-The current project is organized in a modular structure. The main modules are as follows:
+This project adopts a modular organizational approach, with a clear structure and easy scalability:
 
-| Module            | Description             | Main Functions                                               |
-| ----------------- | ----------------------- | ------------------------------------------------------------ |
-| **App**           | Main application module | Application entry point, feature navigation, menu management |
-| **BasicPlayback** | Basic playback module   | Video playback demo, playback controls                       |
-| **Common**        | Common base module      | Constant definitions, utility classes                        |
+| Module                  | Description                          | Main Functions                              |
+| ----------------------- | ------------------------------------ | ------------------------------------------- |
+| **App**                 | Main application module              | Application entry, feature navigation, menu |
+| **Common**              | Common base module                   | Constants, utility classes                  |
+| **BasicPlayback**       | Single-Function demonstration module | Basic video playback                        |
+| **PlaybackSurfaceView** | Single-Function demonstration module | Basic video playback using SurfaceView      |
+| **PlaybackTextureView** | Single-Function demonstration module | Basic video playback using TextureView      |
+| **Download**            | Single-Function demonstration module | Video download and offline playback         |
+| **ExternalSubtitle**    | Single-Function demonstration module | External subtitle demo and switching        |
+| **FloatWindow**         | Single-Function demonstration module | Floating window playback                    |
+| **MultiResolution**     | Single-Function demonstration module | Multi-bitrate/resolution switching          |
+| **PictureInPicture**    | Single-Function demonstration module | Picture-in-picture playback                 |
+| **Preload**             | Single-Function demonstration module | Video preloading (Direct URL)               |
+| **RtsLiveStream**       | Single-Function demonstration module | RTS ultra-low latency live streaming        |
+| **Thumbnail**           | Single-Function demonstration module | Video thumbnail preview                     |
 
-> 📌 Additional modules such as "Advanced Playback", "Ad Insertion", or "DRM Support" can be added later to continuously expand the project's capabilities.
+> 📌 The functional modules will be continuously expanded according to business and demonstration needs. The table only lists some representative modules. For more functions, please follow the project's subsequent updates.
 
 ## **🔐 License Configuration Instructions**
 
@@ -75,11 +85,19 @@ After completing the configuration, please rebuild and run the project. The SDK 
 
 ### **🧰 Environment Requirements**
 
-| Tool           | Version Required |
-| -------------- | ---------------- |
-| Android Studio | 4.0+             |
-| Android SDK    | API 21+          |
-| Java           | 8+               |
+| Tool           | Version Requirement  |
+| -------------- | -------------------- |
+| Android Studio | 4.0+                 |
+| Android SDK    | API 21+              |
+| JDK            | Recommended: 8 or 11 |
+
+**⚠️ Note:** The current Gradle version **does not support JDK 17 or higher**.
+
+ If you have JDK 17, 21, 23, or later installed, please switch to JDK 8 or 11 before building the project.
+
+> **How to set JDK 11:**
+>
+> In Android Studio, go to `Settings` (or `Preferences`) → `Build, Execution, Deployment` → `Build Tools` → `Gradle` → `Gradle JDK`, and select 11. (If JDK 11 is not available, please upgrade Android Studio.)
 
 ### **📦 Build and Run**
 
