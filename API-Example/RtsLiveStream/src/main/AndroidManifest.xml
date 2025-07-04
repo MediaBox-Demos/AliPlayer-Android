@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.aliyun.player.rtslivestream">
+
+    <application>
+        <activity
+            android:name=".RtsLiveStreamActivity"
+            android:exported="true"
+            android:theme="@style/Theme.MaterialComponents.Light">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data
+                    android:host="basic"
+                    android:path="/rts"
+                    android:scheme="demo" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

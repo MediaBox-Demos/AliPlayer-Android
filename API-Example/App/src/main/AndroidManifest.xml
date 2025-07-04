@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.aliyun.player.example">
+
+    <!-- 阿里云播放器 SDK 所需权限 -->
+
+    <!--  Used for network features  -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!--  To check the network connection state of the device, you'll need to add the ACCESS_NETWORK_STATE permission.  -->
+    <!--  This permission does not require user consent at runtime, but needs to be declared in the app's AndroidManifest.xml.  -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- Used for accessing storage files  -->
+    <!--  Storage permissions  -->
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/ic_launcher"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MaterialComponents.Light"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name="com.aliyun.player.example.MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!--    配置license    -->
+        <!--    接入 License：https://help.aliyun.com/zh/apsara-video-sdk/user-guide/access-to-license     -->
+        <!--    Configuring the license    -->
+        <!--    Bind a license：https://www.alibabacloud.com/help/en/apsara-video-sdk/user-guide/access-to-license     -->
+        <meta-data
+            android:name="com.aliyun.alivc_license.licensekey"
+            android:value="no80rm6m8ayTXNTk80637a6cdef2a482588e104c17b8993c7" />
+        <meta-data
+            android:name="com.aliyun.alivc_license.licensefile"
+            android:value="assets/cert/license.crt" />
+
+    </application>
+
+</manifest>

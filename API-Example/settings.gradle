@@ -1,0 +1,8 @@
+rootProject.name = "API-Example"
+include ':App'
+include ':BasicPlayback'
+include ':Common'
+include ':ExternalSubtitle'
+include ':RtsLiveStream'
+include ':PictureInPicture'
+include ':Thumbnail'

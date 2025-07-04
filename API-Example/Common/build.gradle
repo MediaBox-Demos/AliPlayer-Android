@@ -1,0 +1,41 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 31
+
+    defaultConfig {
+        minSdkVersion 21
+
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.3.0'
+
+    // 您可以参考官网获取播放器 SDK 最新版本：https://help.aliyun.com/zh/vod/developer-reference/sdk-overview-and-download
+    // You can refer to the official website for SDK updates: https://help.aliyun.com/zh/vod/developer-reference/sdk-overview-and-download
+    def player_sdk_version = "7.3.0"
+    api "com.aliyun.sdk.android:AliyunPlayer:$player_sdk_version-full"
+
+    // 播放器与Rts低延时直播组件的桥接层（AlivcArtc），版本号需要与播放器一致，需要和 Rts低延时直播组件 一起集成
+    api "com.aliyun.sdk.android:AlivcArtc:$player_sdk_version"
+
+    // Rts低延时直播组件 您可以参考官网 获取 RTS SDK 最新版本：https://help.aliyun.com/zh/live/user-guide/pull-streams-over-rts-on-android
+    // You can refer to the official website for SDK updates:：https://help.aliyun.com/zh/live/user-guide/pull-streams-over-rts-on-android
+    def rts_sdk_version = "7.3.0" // 独立版本号，目前最新版本
+    api "com.aliyun.rts.android:RtsSDK:$rts_sdk_version"
+
+}

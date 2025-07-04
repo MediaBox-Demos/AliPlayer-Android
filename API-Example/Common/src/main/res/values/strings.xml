@@ -1,0 +1,40 @@
+<resources>
+    <!-- 应用名称 -->
+    <string name="app_name">AliPlayer-API-Example</string>
+
+    <!-- 菜单页眉 -->
+    <string name="menu_header_basic">基础功能</string>
+    <string name="menu_header_advanced">进阶功能</string>
+
+    <!-- 基础功能菜单项 -->
+    <string name="menu_basic_demo_title">基础演示</string>
+    <string name="menu_basic_demo_desc">展示基础功能的使用方法</string>
+    <string name="menu_rts_demo_title">RTS 低延迟直播组件</string>
+    <string name="menu_rts_demo_desc">展示RTS低延迟直播组件的使用方法</string>
+
+    <!-- 进阶功能菜单项 -->
+    <string name="menu_pip_demo_title">画中画演示</string>
+    <string name="menu_pip_demo_desc">展示画中画的使用方法</string>
+    <string name="menu_thumbnail_title">缩略图演示</string>
+    <string name="menu_thumbnail_desc">展示缩略图的使用方法</string>
+
+
+    <!-- 通用提示信息 -->
+    <string name="schema_not_supported">功能暂未实现: %s</string>
+
+    <!-- 基础播放页面 -->
+    <string name="basic_playback_demo_title">BasicPlayback</string>
+
+    <!-- 外挂字幕页面 -->
+    <string name="external_subtitle_playback_demo_title">ExternalSubTitle</string>
+
+    <!-- RTS 直播页面 -->
+    <string name="rts_livestream_demo_title">RTSLiveStream</string>
+
+    <!-- 画中画 页面   -->
+    <string name="basic_pip_demo_title">PictureInPicture</string>
+
+    <!-- 缩略图页面 -->
+    <string name="thumbnail_demo_title">Thumbnail</string>
+    <!--  公共字段  -->
+</resources>
