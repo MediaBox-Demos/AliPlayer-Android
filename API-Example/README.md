@@ -28,21 +28,22 @@ Language: 中文简体 | [English](README-EN.md)
 
 本项目采用模块化组织方式，结构清晰、易于扩展：
 
-| 模块                    | 说明           | 主要功能                            |
-| ----------------------- | -------------- | ----------------------------------- |
-| **App**                 | 主应用模块     | 应用入口、功能导航、菜单管理        |
-| **Common**              | 公共基础模块   | 常量定义、工具类                    |
-| **BasicPlayback**       | 单功能演示模块 | 视频基础播放演示                    |
-| **PlaybackSurfaceView** | 单功能演示模块 | 基于 SurfaceView 的视频基础播放演示 |
-| **PlaybackTextureView** | 单功能演示模块 | 基于 TextureView 视频基础播放演示   |
-| **Download**            | 单功能演示模块 | 视频下载与离线播放                  |
-| **ExternalSubtitle**    | 单功能演示模块 | 外挂字幕演示与切换                  |
-| **FloatWindow**         | 单功能演示模块 | 悬浮窗播放                          |
-| **MultiResolution**     | 单功能演示模块 | 多码率/分辨率切换                   |
-| **PictureInPicture**    | 单功能演示模块 | 画中画播放                          |
-| **Preload**             | 单功能演示模块 | 视频预加载（Direct URL）            |
-| **RtsLiveStream**       | 单功能演示模块 | RTS 超低延迟直播播放                |
-| **Thumbnail**           | 单功能演示模块 | 视频缩略图预览                      |
+| 模块                      | 说明           | 主要功能                     | 入口文件                        |
+|-------------------------| -------------- |--------------------------|-----------------------------|
+| **App**                 | 主应用模块     | 应用入口、功能导航、菜单管理           | MainActivity                |
+| **Common**              | 公共基础模块   | 常量定义、工具类                 | -                           |
+| **BasicPlayback**       | 单功能演示模块 | 视频基础播放演示                 | BasicPlaybackActivity       |
+| **BasicLiveStream**     | 单功能演示模块 | 基础直播播放演示                 | BasicLiveStreamActivity     |
+| **PlaybackSurfaceView** | 单功能演示模块 | 基于 SurfaceView 的视频基础播放演示 | PlaybackSurfaceViewActivity |
+| **PlaybackTextureView** | 单功能演示模块 | 基于 TextureView 视频基础播放演示  | PlaybackTextureViewActivity |
+| **Downloader**          | 单功能演示模块 | 视频下载与离线播放                | DownloaderActivity          |
+| **ExternalSubtitle**    | 单功能演示模块 | 外挂字幕演示与切换                | ExternalSubtitleActivity    |
+| **FloatWindow**         | 单功能演示模块 | 悬浮窗播放                    | FloatWindowActivity         |
+| **MultiResolution**     | 单功能演示模块 | 多码率/分辨率切换                | MultiResolutionActivity     |
+| **PictureInPicture**    | 单功能演示模块 | 画中画播放                    | PictureInPictureActivity    |
+| **Preload**             | 单功能演示模块 | 视频预加载（Direct URL/VOD）    | PreloadActivity             |
+| **RtsLiveStream**       | 单功能演示模块 | RTS 超低延迟直播播放             | RtsLiveStreamActivity       |
+| **Thumbnail**           | 单功能演示模块 | 视频缩略图预览                  | ThumbnailActivity           |
 
 > 📌 功能模块将根据业务和演示需求不断扩展，表格仅列举部分代表模块，更多功能请关注项目后续更新。
 

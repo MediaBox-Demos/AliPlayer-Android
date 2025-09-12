@@ -27,6 +27,8 @@ public final class Constants {
 
         // Basic features paths
         private static final String PATH_PLAYBACK = "/playback";
+
+        private static final String PATH_LIVESTREAM = "/livestream";
         private static final String PATH_PLAYBACK_SURFACE_VIEW = "/playback_surface_view";
         private static final String PATH_PLAYBACK_TEXTURE_VIEW = "/playback_texture_view";
 
@@ -53,6 +55,9 @@ public final class Constants {
 
         // Complete schema URLs
         public static final String BASIC_PLAYBACK = SCHEME + "://" + HOST_BASIC + PATH_PLAYBACK;
+
+        public static final String BASIC_LIVESTREAM = SCHEME + "://" + HOST_BASIC + PATH_LIVESTREAM;
+
         public static final String BASIC_PLAYBACK_SURFACE_VIEW = SCHEME + "://" + HOST_BASIC + PATH_PLAYBACK_SURFACE_VIEW;
         public static final String BASIC_PLAYBACK_TEXTURE_VIEW = SCHEME + "://" + HOST_BASIC + PATH_PLAYBACK_TEXTURE_VIEW;
 
@@ -87,6 +92,12 @@ public final class Constants {
         // URL of the sample video file
         public static final String SAMPLE_VIDEO_URL = "https://alivc-demo-vod.aliyuncs.com/6b357371ef3c45f4a06e2536fd534380/53733986bce75cfc367d7554a47638c0-fd.mp4";
 
+        // URL of the sample livestream video file
+        public static final String SAMPLE_LIVESTREAM_VIDEO_URL = "";
+
+        // URL of the sample switch livestream video file
+        public static final String SAMPLE_SWITCH_LIVESTREAM_VIDEO_URL = "";
+
         // URL of the RTS LiveStream
         public static final String SAMPLE_RTS_URL = "";
 
@@ -107,5 +118,8 @@ public final class Constants {
 
         // Vid of the request playAuth
         public static final String DOWNLOAD_VID = "6609a2f737cb43e1a79ec2bc6aee781b";
+
+        // URL of the preload video file
+        public static final String PRELOAD_VID_URL = "https://alivc-demo-vod.aliyuncs.com/59f748948daa4438b42e42db755ae01e/9d44b2b86d334c6b9df649e35ad0240f.m3u8";
     }
 }

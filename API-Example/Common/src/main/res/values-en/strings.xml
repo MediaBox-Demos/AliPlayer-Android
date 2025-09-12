@@ -11,6 +11,9 @@
     <string name="menu_basic_playback_title">Basic Playback</string>
     <string name="menu_basic_playback_desc">Demonstrates how to implement basic video playback using the ApsaraVideo Player SDK</string>
 
+    <string name="menu_basic_live_stream_title">Basic LiveStream</string>
+    <string name="menu_basic_live_stream_desc">Demonstrates how to use Alibaba Cloud Player to achieve basic playback of live streams</string>
+
     <string name="menu_basic_playback_surface_view_title">Basic Playback (SurfaceView)</string>
     <string name="menu_basic_playback_surface_view_desc">Shows how to implement video playback using SurfaceView</string>
 
@@ -53,5 +56,15 @@
     <!--  Common Strings  -->
     <string name="pip_active_title">Active PiP</string>
     <string name="float_active_title">Open Floating Window</string>
+    <string name="app_common_start">Start</string>
+    <string name="app_common_pause">Pause</string>
+    <string name="app_common_resume">Resume</string>
+    <string name="app_common_cancel">Cancel</string>
+    <string name="preload_onCompleted">Preload completed - TaskId: %s, UrlOrVid: %s</string>
+    <string name="preload_onCanceled">Preload cancel - TaskId: %s, UrlOrVid: %s</string>
+    <string name="preload_onError">Preload error - TaskId: %s, UrlOrVid: %s, Error: %s</string>
+    <string name="app_common_switch_resolution">Switch resolution</string>
+    <string name="app_common_onSwitchedSuccess">[SwitchStream]: switch success, url =%s </string>
+    <string name="app_common_onSwitchedFail">[SwitchStream]: switch failed, url =%s , error =%s </string>
 
 </resources>

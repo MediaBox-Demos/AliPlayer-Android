@@ -10,6 +10,9 @@
     <string name="menu_basic_playback_title">基础播放</string>
     <string name="menu_basic_playback_desc">演示如何使用阿里云播放器实现视频基础播放</string>
 
+    <string name="menu_basic_live_stream_title">基础直播</string>
+    <string name="menu_basic_live_stream_desc">演示如何使用阿里云播放器实现直播流基础播放</string>
+
     <string name="menu_basic_playback_surface_view_title">基础播放（SurfaceView）</string>
     <string name="menu_basic_playback_surface_view_desc">基于 SurfaceView 演示视频播放的实现方式</string>
 
@@ -52,5 +55,15 @@
     <!--  公共字段  -->
     <string name="pip_active_title">唤出画中画</string>
     <string name="float_active_title">唤出悬浮窗</string>
+    <string name="app_common_start">开始</string>
+    <string name="app_common_pause">暂停</string>
+    <string name="app_common_resume">恢复</string>
+    <string name="app_common_cancel">取消</string>
+    <string name="preload_onCompleted">预加载完成 - TaskId: %s, UrlOrVid: %s</string>
+    <string name="preload_onCanceled">预加载取消 - TaskId: %s, UrlOrVid: %s</string>
+    <string name="preload_onError">预加载错误 - TaskId: %s, UrlOrVid: %s, Error: %s</string>
+    <string name="app_common_switch_resolution">切换清晰度</string>
+    <string name="app_common_onSwitchedSuccess">[SwitchStream]: 切换成功, url =%s </string>
+    <string name="app_common_onSwitchedFail">[SwitchStream]: 切换失败, url =%s , error =%s </string>
 
 </resources>
