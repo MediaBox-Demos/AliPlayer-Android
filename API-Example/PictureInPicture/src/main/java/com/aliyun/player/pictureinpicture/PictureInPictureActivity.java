@@ -14,7 +14,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.aliyun.player.AliPlayer;
 import com.aliyun.player.AliPlayerFactory;
+import com.aliyun.player.IPlayer;
+import com.aliyun.player.bean.ErrorInfo;
 import com.aliyun.player.common.Constants;
+import com.aliyun.player.common.utils.ToastUtils;
 import com.aliyun.player.source.UrlSource;
 import com.aliyun.player.videoview.AliDisplayView;
 
@@ -43,18 +46,18 @@ import com.aliyun.player.videoview.AliDisplayView;
  * - 调用 start() 方法开始播放
  * <p>
  * Step 5: 设置画中画参数并开启画中画
- *  - Rational aspectRatio = new Rational(16, 9); // 画中画的宽高比
- *  - PictureInPictureParams.Builder pipBuilder = new PictureInPictureParams.Builder();
- *  - pipBuilder.setAspectRatio(aspectRatio);
- *  - enterPictureInPictureMode(pipBuilder.build());
+ * - Rational aspectRatio = new Rational(16, 9); // 画中画的宽高比
+ * - PictureInPictureParams.Builder pipBuilder = new PictureInPictureParams.Builder();
+ * - pipBuilder.setAspectRatio(aspectRatio);
+ * - enterPictureInPictureMode(pipBuilder.build());
  * <p>
  * Step 6: 处理画中画的 UI 显示
  * public void onPictureInPictureModeChanged(boolean isInPictureInPictureMode, Configuration newConfig) {
- *     if (isInPictureInPictureMode){
- *         // hide Other UI
- *     } else {
- *         // show Other UI
- *     }
+ * if (isInPictureInPictureMode){
+ * // hide Other UI
+ * } else {
+ * // show Other UI
+ * }
  * }
  * <p>
  * Step 7: 资源清理
@@ -136,6 +139,17 @@ public class PictureInPictureActivity extends AppCompatActivity {
         // mAliPlayer.setTraceId(traceId);
 
         Log.d(TAG, "[Step 1] 播放器创建完成: " + mAliPlayer);
+
+        if (mAliPlayer == null) {
+            return;
+        }
+
+        mAliPlayer.setOnErrorListener(new IPlayer.OnErrorListener() {
+            @Override
+            public void onError(ErrorInfo errorInfo) {
+                ToastUtils.showToastLong(errorInfo.getExtra());
+            }
+        });
     }
 
     /**
@@ -204,9 +218,10 @@ public class PictureInPictureActivity extends AppCompatActivity {
 
     /**
      * 画中画模式监听，检测是否处于画中画模式
+     *
      * @param isInPictureInPictureMode True if the activity is in picture-in-picture mode.
-     * @param newConfig The new configuration of the activity with the state
-     *                  {@param isInPictureInPictureMode}.
+     * @param newConfig                The new configuration of the activity with the state
+     *                                 {@param isInPictureInPictureMode}.
      */
     @Override
     public void onPictureInPictureModeChanged(boolean isInPictureInPictureMode, Configuration newConfig) {

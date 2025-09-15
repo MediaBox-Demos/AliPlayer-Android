@@ -10,9 +10,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.aliyun.player.AliPlayer;
 import com.aliyun.player.AliPlayerFactory;
 import com.aliyun.player.IPlayer;
+import com.aliyun.player.bean.ErrorInfo;
 import com.aliyun.player.bean.InfoBean;
 import com.aliyun.player.bean.InfoCode;
 import com.aliyun.player.common.Constants;
+import com.aliyun.player.common.utils.ToastUtils;
 import com.aliyun.player.source.UrlSource;
 import com.aliyun.player.videoview.AliDisplayView;
 import com.aliyun.thumbnail.ThumbnailBitmapInfo;
@@ -135,6 +137,17 @@ public class ThumbnailActivity extends AppCompatActivity {
         // mAliPlayer.setTraceId(traceId);
 
         Log.d(TAG, "[Step 1] 播放器创建完成: " + mAliPlayer);
+
+        if (mAliPlayer == null) {
+            return;
+        }
+
+        mAliPlayer.setOnErrorListener(new IPlayer.OnErrorListener() {
+            @Override
+            public void onError(ErrorInfo errorInfo) {
+                ToastUtils.showToastLong(errorInfo.getExtra());
+            }
+        });
     }
 
     /**
@@ -224,7 +237,7 @@ public class ThumbnailActivity extends AppCompatActivity {
 
             @Override
             public void onThumbnailGetFail(long positionMs, String errorMsg) {
-
+                ToastUtils.showToastLong(errorMsg);
             }
         });
 

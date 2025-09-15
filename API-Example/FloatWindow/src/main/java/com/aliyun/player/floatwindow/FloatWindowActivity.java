@@ -8,10 +8,11 @@ import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.aliyun.player.common.utils.ToastUtils;
 
 public class FloatWindowActivity extends AppCompatActivity {
     private static final String TAG = "FloatWindowActivity";
@@ -101,7 +102,7 @@ public class FloatWindowActivity extends AppCompatActivity {
                 startService(new Intent(FloatWindowActivity.this, FloatWindowService.class));
             } else {
                 // 权限被拒绝
-                Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show();
+                ToastUtils.showToast("Permission denied");
             }
         }
     }

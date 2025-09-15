@@ -36,8 +36,8 @@
     <string name="menu_multi_resolution_title">Multi-Resolution</string>
     <string name="menu_multi_resolution_desc">Demonstrate Multi-resolution usage</string>
 
-    <string name="menu_preload_url_title">Preload</string>
-    <string name="menu_preload_url_desc">Demonstrate Preload usage</string>
+    <string name="menu_preload_url_title">Preload（Direct URL/VOD）</string>
+    <string name="menu_preload_url_desc">Demonstrate Preload（Direct URL/VOD） usage</string>
 
     <string name="menu_float_window_title">Float-Window</string>
     <string name="menu_float_window_desc">Demonstrate Float-Window usage</string>

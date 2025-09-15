@@ -14,7 +14,9 @@ import android.view.WindowManager;
 import com.aliyun.player.AliPlayer;
 import com.aliyun.player.AliPlayerFactory;
 import com.aliyun.player.IPlayer;
+import com.aliyun.player.bean.ErrorInfo;
 import com.aliyun.player.common.Constants;
+import com.aliyun.player.common.utils.ToastUtils;
 import com.aliyun.player.source.UrlSource;
 import com.aliyun.player.videoview.AliDisplayView;
 
@@ -161,6 +163,17 @@ public class FloatWindowService extends Service {
             public void onCompletion() {
                 // 播放完成后关闭悬浮窗
                 stopSelf();
+            }
+        });
+
+        if (mAliPlayer == null) {
+            return;
+        }
+
+        mAliPlayer.setOnErrorListener(new IPlayer.OnErrorListener() {
+            @Override
+            public void onError(ErrorInfo errorInfo) {
+                ToastUtils.showToastLong(errorInfo.getExtra());
             }
         });
 

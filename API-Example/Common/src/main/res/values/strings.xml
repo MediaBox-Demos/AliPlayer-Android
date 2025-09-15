@@ -35,8 +35,8 @@
     <string name="menu_multi_resolution_title">多清晰度切换</string>
     <string name="menu_multi_resolution_desc">展示多清晰度切换的使用方法</string>
 
-    <string name="menu_preload_url_title">预加载（Direct URL）</string>
-    <string name="menu_preload_url_desc">展示预加载（Direct URL）的使用方法</string>
+    <string name="menu_preload_url_title">预加载（Direct URL/VOD）</string>
+    <string name="menu_preload_url_desc">展示预加载（Direct URL/VOD）的使用方法</string>
 
     <string name="menu_float_window_title">悬浮窗</string>
     <string name="menu_float_window_desc">展示悬浮窗的使用方法</string>

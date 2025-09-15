@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,6 +12,7 @@ import com.aliyun.player.AliPlayerFactory;
 import com.aliyun.player.IPlayer;
 import com.aliyun.player.bean.ErrorInfo;
 import com.aliyun.player.common.Constants;
+import com.aliyun.player.common.utils.ToastUtils;
 import com.aliyun.player.source.UrlSource;
 import com.aliyun.player.videoview.AliDisplayView;
 
@@ -111,6 +111,17 @@ public class BasicLiveStreamActivity extends AppCompatActivity {
         // mAliPlayer.setTraceId(traceId);
 
         Log.d(TAG, "[Step 0] 播放器创建完成: " + mAliPlayer);
+
+        if (mAliPlayer == null) {
+            return;
+        }
+
+        mAliPlayer.setOnErrorListener(new IPlayer.OnErrorListener() {
+            @Override
+            public void onError(ErrorInfo errorInfo) {
+                ToastUtils.showToastLong(errorInfo.getExtra());
+            }
+        });
     }
 
     /**
@@ -130,7 +141,7 @@ public class BasicLiveStreamActivity extends AppCompatActivity {
 
         // 校验播放地址是否为空
         if (TextUtils.isEmpty(Constants.DataSource.SAMPLE_LIVESTREAM_VIDEO_URL)) {
-            Toast.makeText(this, getString(R.string.set_stream_url_first), Toast.LENGTH_SHORT).show();
+            ToastUtils.showToastLong(getString(R.string.set_stream_url_first));
             return;
         }
 

@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 
 import com.aliyun.player.AliPlayerGlobalSettings;
+import com.aliyun.player.common.utils.ContextUtils;
 
 /**
  * @author keria
@@ -32,6 +33,10 @@ public class MainApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        // 初始化 ContextUtils
+        ContextUtils.setContext(this);
+
         // 设置业务来源信息
         AliPlayerGlobalSettings.setOption(AliPlayerGlobalSettings.SET_EXTRA_DATA, EXTRA_DATA_API_EXAMPLE);
 

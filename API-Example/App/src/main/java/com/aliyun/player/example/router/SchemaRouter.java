@@ -5,8 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.text.TextUtils;
-import android.widget.Toast;
 
+import com.aliyun.player.common.utils.ToastUtils;
 import com.aliyun.player.example.R;
 
 /**
@@ -44,6 +44,6 @@ public class SchemaRouter {
 
     private static void showSchemaNotSupportedMessage(Context context, String schema) {
         String message = context.getString(R.string.schema_not_supported, schema);
-        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+        ToastUtils.showToastLong(message);
     }
 }

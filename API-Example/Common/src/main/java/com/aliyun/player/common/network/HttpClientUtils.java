@@ -1,4 +1,4 @@
-package com.aliyun.player.common.networkUtils;
+package com.aliyun.player.common.network;
 
 import java.io.BufferedReader;
 import java.io.IOException;

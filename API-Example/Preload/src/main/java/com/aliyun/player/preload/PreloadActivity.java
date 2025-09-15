@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,8 +14,10 @@ import com.aliyun.loader.PreloadTask;
 import com.aliyun.player.AliPlayer;
 import com.aliyun.player.AliPlayerFactory;
 import com.aliyun.player.AliPlayerGlobalSettings;
+import com.aliyun.player.IPlayer;
 import com.aliyun.player.bean.ErrorInfo;
 import com.aliyun.player.common.Constants;
+import com.aliyun.player.common.utils.ToastUtils;
 import com.aliyun.player.nativeclass.PreloadConfig;
 import com.aliyun.player.source.Definition;
 import com.aliyun.player.source.UrlSource;
@@ -69,7 +70,7 @@ public class PreloadActivity extends AppCompatActivity {
     // 默认分辨率
     private static final int DEFAULT_RESOLUTION = 640 * 480;
     // 默认码率
-    private static final int DEFAULT_BAND_WIDTH = 400000;
+    private static final int DEFAULT_BAND_WIDTH = 400 * 1000;
     // 默认清晰度
     private static final String DEFAULT_QUALITY = "AUTO";
     // 默认清晰度列表
@@ -132,6 +133,10 @@ public class PreloadActivity extends AppCompatActivity {
      * Step 1: 创建播放器实例
      */
     private void setupPlayer() {
+        if (TextUtils.isEmpty(Constants.DataSource.SAMPLE_LIVESTREAM_VIDEO_URL)) {
+            ToastUtils.showToastLong(getString(R.string.set_stream_url_first));
+            return;
+        }
         // 创建播放器实例
         mAliPlayer = AliPlayerFactory.createAliPlayer(getApplicationContext());
 
@@ -142,6 +147,17 @@ public class PreloadActivity extends AppCompatActivity {
         // mAliPlayer.setTraceId(traceId);
 
         Log.d(TAG, "[Step 1] 播放器创建完成: " + mAliPlayer);
+
+        if (mAliPlayer == null) {
+            return;
+        }
+
+        mAliPlayer.setOnErrorListener(new IPlayer.OnErrorListener() {
+            @Override
+            public void onError(ErrorInfo errorInfo) {
+                ToastUtils.showToastLong(errorInfo.getExtra());
+            }
+        });
     }
 
     /**
@@ -358,22 +374,20 @@ public class PreloadActivity extends AppCompatActivity {
 
         @Override
         public void onError(@NonNull String taskId, @NonNull String urlOrVid, @NonNull ErrorInfo errorInfo) {
-            Log.e(TAG, String.format(getString(R.string.preload_onError),
+            ToastUtils.showToastLong(String.format(getString(R.string.preload_onError),
                     taskId, urlOrVid, errorInfo.getMsg()));
-            Toast.makeText(PreloadActivity.this, String.format(getString(R.string.preload_onError),
-                    taskId, urlOrVid, errorInfo.getMsg()), Toast.LENGTH_SHORT).show();
         }
 
         @Override
         public void onCompleted(@NonNull String taskId, @NonNull String urlOrVid) {
             Log.d(TAG, String.format(getString(R.string.preload_onCompleted), taskId, urlOrVid));
-            Toast.makeText(PreloadActivity.this, String.format(getString(R.string.preload_onCompleted), taskId, urlOrVid), Toast.LENGTH_SHORT).show();
+            ToastUtils.showToastLong(String.format(getString(R.string.preload_onCompleted), taskId, urlOrVid));
         }
 
         @Override
         public void onCanceled(@NonNull String taskId, @NonNull String urlOrVid) {
             Log.w(TAG, String.format(getString(R.string.preload_onCanceled), taskId, urlOrVid));
-            Toast.makeText(PreloadActivity.this, String.format(getString(R.string.preload_onCanceled), taskId, urlOrVid), Toast.LENGTH_SHORT).show();
+            ToastUtils.showToastLong(String.format(getString(R.string.preload_onCanceled), taskId, urlOrVid));
         }
     }
 

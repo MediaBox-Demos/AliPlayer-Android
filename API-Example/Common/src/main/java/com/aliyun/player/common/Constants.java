@@ -93,12 +93,15 @@ public final class Constants {
         public static final String SAMPLE_VIDEO_URL = "https://alivc-demo-vod.aliyuncs.com/6b357371ef3c45f4a06e2536fd534380/53733986bce75cfc367d7554a47638c0-fd.mp4";
 
         // URL of the sample livestream video file
+        // FIXME 请填写直播流地址，否则会影响相关功能
         public static final String SAMPLE_LIVESTREAM_VIDEO_URL = "";
 
         // URL of the sample switch livestream video file
+        // FIXME 请填写直播流切换地址，否则会影响相关功能
         public static final String SAMPLE_SWITCH_LIVESTREAM_VIDEO_URL = "";
 
         // URL of the RTS LiveStream
+        // FIXME 请填写 ARTC 流地址，否则会影响相关功能
         public static final String SAMPLE_RTS_URL = "";
 
         // URL of the subtitle file

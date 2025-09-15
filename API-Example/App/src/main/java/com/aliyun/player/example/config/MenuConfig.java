@@ -24,9 +24,9 @@ public class MenuConfig {
         // 基础功能区
         items.add(MenuItem.createHeader(context.getString(R.string.menu_header_basic)));
         items.add(MenuItem.createItem(context.getString(R.string.menu_basic_playback_title), Constants.Schema.BASIC_PLAYBACK, context.getString(R.string.menu_basic_playback_desc)));
-        items.add(MenuItem.createItem(context.getString(R.string.menu_basic_live_stream_title), Constants.Schema.BASIC_LIVESTREAM, context.getString(R.string.menu_basic_live_stream_desc)));
         items.add(MenuItem.createItem(context.getString(R.string.menu_basic_playback_surface_view_title), Constants.Schema.BASIC_PLAYBACK_SURFACE_VIEW, context.getString(R.string.menu_basic_playback_surface_view_desc)));
         items.add(MenuItem.createItem(context.getString(R.string.menu_basic_playback_texture_view_title), Constants.Schema.BASIC_PLAYBACK_TEXTURE_VIEW, context.getString(R.string.menu_basic_playback_texture_view_desc)));
+        items.add(MenuItem.createItem(context.getString(R.string.menu_basic_live_stream_title), Constants.Schema.BASIC_LIVESTREAM, context.getString(R.string.menu_basic_live_stream_desc)));
         items.add(MenuItem.createItem(context.getString(R.string.menu_rts_playback_title), Constants.Schema.RTS_LIVE_STREAM, context.getString(R.string.menu_rts_playback_desc)));
 
         // 进阶功能区

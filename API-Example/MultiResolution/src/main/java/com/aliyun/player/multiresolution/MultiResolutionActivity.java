@@ -3,7 +3,6 @@ package com.aliyun.player.multiresolution;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +14,7 @@ import com.aliyun.player.AliPlayerFactory;
 import com.aliyun.player.IPlayer;
 import com.aliyun.player.bean.ErrorInfo;
 import com.aliyun.player.common.Constants;
+import com.aliyun.player.common.utils.ToastUtils;
 import com.aliyun.player.nativeclass.PlayerConfig;
 import com.aliyun.player.nativeclass.TrackInfo;
 import com.aliyun.player.source.UrlSource;
@@ -102,6 +102,18 @@ public class MultiResolutionActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         mAdapter = new MultiResolutionAdapter();
         mRecyclerView.setAdapter(mAdapter);
+
+        if (mAliPlayer == null) {
+            return;
+        }
+
+        mAliPlayer.setOnErrorListener(new IPlayer.OnErrorListener() {
+            @Override
+            public void onError(ErrorInfo errorInfo) {
+                ToastUtils.showToastLong(errorInfo.getExtra());
+            }
+        });
+
         mAdapter.setOnItemClickListener(new MultiResolutionAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
@@ -149,13 +161,14 @@ public class MultiResolutionActivity extends AppCompatActivity {
             public void onChangedSuccess(TrackInfo trackInfo) {
                 if (trackInfo.getType() == TrackInfo.Type.TYPE_VIDEO) {
                     Log.e(TAG, "[onChangedSuccess]" + trackInfo.getVideoWidth() + "/" + trackInfo.getIndex());
-                    Toast.makeText(MultiResolutionActivity.this, "切换清晰度:" + trackInfo.getVideoWidth() + "P", Toast.LENGTH_SHORT).show();
+                    ToastUtils.showToastLong("切换清晰度:" + trackInfo.getVideoWidth() + "P");
                 }
             }
 
             @Override
             public void onChangedFail(TrackInfo trackInfo, ErrorInfo errorInfo) {
                 Log.e(TAG, "[onChangedFail]" + errorInfo.getCode().name() + ":" + errorInfo.getMsg());
+                ToastUtils.showToastLong(errorInfo.getMsg());
             }
         });
 

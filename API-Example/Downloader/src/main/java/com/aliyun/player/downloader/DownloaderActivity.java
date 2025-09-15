@@ -16,7 +16,7 @@ import com.aliyun.player.AliPlayer;
 import com.aliyun.player.bean.ErrorInfo;
 import com.aliyun.player.common.Constants;
 import com.aliyun.player.common.bean.PlayAuthBean;
-import com.aliyun.player.common.networkUtils.HttpClientUtils;
+import com.aliyun.player.common.network.HttpClientUtils;
 import com.aliyun.player.nativeclass.MediaInfo;
 import com.aliyun.player.nativeclass.TrackInfo;
 import com.aliyun.player.source.VidAuth;

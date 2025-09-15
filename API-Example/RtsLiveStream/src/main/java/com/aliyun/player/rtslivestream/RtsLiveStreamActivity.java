@@ -5,7 +5,6 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,8 +14,10 @@ import com.aliyun.player.AliPlayer;
 import com.aliyun.player.AliPlayerFactory;
 import com.aliyun.player.AliPlayerGlobalSettings;
 import com.aliyun.player.IPlayer;
+import com.aliyun.player.bean.ErrorInfo;
 import com.aliyun.player.bean.InfoCode;
 import com.aliyun.player.common.Constants;
+import com.aliyun.player.common.utils.ToastUtils;
 import com.aliyun.player.nativeclass.PlayerConfig;
 import com.aliyun.player.source.UrlSource;
 
@@ -41,19 +42,19 @@ import com.aliyun.player.source.UrlSource;
  * 官方文档：<a href="https://help.aliyun.com/zh/live/pull-streams-over-rts-on-android">...</a>
  * <p>
  * 1. 添加 Maven 仓库
- *    在项目根目录 build.gradle 中添加：
- *    maven { url 'http://maven.aliyun.com/nexus/content/repositories/releases' }
+ * 在项目根目录 build.gradle 中添加：
+ * maven { url 'http://maven.aliyun.com/nexus/content/repositories/releases' }
  * <p>
  * 2. 添加依赖（build.gradle 模块级）
- *    def player_sdk_version = "x.x.x"  // 替换为实际版本
- *    def rts_sdk_version = "7.3.0"
+ * def player_sdk_version = "x.x.x"  // 替换为实际版本
+ * def rts_sdk_version = "7.3.0"
  * <p>
- *    implementation 'com.aliyun.rts.android:RtsSDK:$rts_sdk_version'
- *    implementation 'com.aliyun.sdk.android:AliyunPlayer:$player_sdk_version-full'
- *    implementation 'com.aliyun.sdk.android:AlivcArtc:$player_sdk_version'  // 桥接层，版本需一致
+ * implementation 'com.aliyun.rts.android:RtsSDK:$rts_sdk_version'
+ * implementation 'com.aliyun.sdk.android:AliyunPlayer:$player_sdk_version-full'
+ * implementation 'com.aliyun.sdk.android:AlivcArtc:$player_sdk_version'  // 桥接层，版本需一致
  * <p>
  * 3. 加载 RTS 动态库
- *    static { System.loadLibrary("RtsSDK"); }
+ * static { System.loadLibrary("RtsSDK"); }
  * <p>
  * 4. 创建播放器并设置播放源即可使用
  */
@@ -129,7 +130,7 @@ public class RtsLiveStreamActivity extends AppCompatActivity {
 
     /**
      * Step 2: 初始化播放器实例并设置基础行为
-     *
+     * <p>
      * 执行流程：
      * 1. 使用工厂方法创建 AliPlayer 实例
      * 2. 设置准备完成回调（onPrepared）自动开始播放
@@ -195,7 +196,7 @@ public class RtsLiveStreamActivity extends AppCompatActivity {
 
     /**
      * Step 3 & 4: 设置播放源并启动播放
-     *
+     * <p>
      * 执行流程：
      * 1. 获取配置的 RTS 播放地址
      * 2. 校验地址有效性
@@ -211,7 +212,7 @@ public class RtsLiveStreamActivity extends AppCompatActivity {
 
         // 校验播放地址是否为空
         if (TextUtils.isEmpty(videoURL)) {
-            Toast.makeText(this, getString(R.string.set_stream_url_first), Toast.LENGTH_SHORT).show();
+            ToastUtils.showToastLong(getString(R.string.set_stream_url_first));
             return;
         }
 
@@ -230,6 +231,17 @@ public class RtsLiveStreamActivity extends AppCompatActivity {
             // 2. 将修改后的配置应用到播放器
             mAliPlayer.setConfig(config);
         }
+
+        if (mAliPlayer == null) {
+            return;
+        }
+
+        mAliPlayer.setOnErrorListener(new IPlayer.OnErrorListener() {
+            @Override
+            public void onError(ErrorInfo errorInfo) {
+                ToastUtils.showToastLong(errorInfo.getExtra());
+            }
+        });
 
         // 全局设置：启用 RTS 自动降级功能（默认开启）
         // 当网络不佳时，自动切换至普通直播流保障连续性
@@ -262,7 +274,7 @@ public class RtsLiveStreamActivity extends AppCompatActivity {
 
     /**
      * Step 4: 释放播放器资源
-     *
+     * <p>
      * 清理流程：
      * 1. 停止播放任务
      * 2. 销毁播放器实例（释放解码器、网络等资源）
