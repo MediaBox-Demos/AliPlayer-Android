@@ -133,9 +133,8 @@ public class RtsLiveStreamActivity extends AppCompatActivity {
      * <p>
      * 执行流程：
      * 1. 使用工厂方法创建 AliPlayer 实例
-     * 2. 设置准备完成回调（onPrepared）自动开始播放
-     * 3. 注册 onInfo 回调以获取调试信息（如 TraceID）
-     * 4. 绑定 SurfaceView 的生命周期，实现画面渲染
+     * 2. 注册 onInfo 回调以获取调试信息（如 TraceID）
+     * 3. 绑定 SurfaceView 的生命周期，实现画面渲染
      */
     private void setupPlayer() {
         // 创建播放器对象
@@ -145,14 +144,6 @@ public class RtsLiveStreamActivity extends AppCompatActivity {
         // traceId 为用户/设备唯一标识（如 userID、IMEI），用于异常追踪
         // 文档：https://help.aliyun.com/zh/vod/developer-reference/single-point-tracing
         // mAliPlayer.setTraceId(traceId);
-
-        // 设置准备完成监听器：播放器准备好后自动开始播放
-        mAliPlayer.setOnPreparedListener(new IPlayer.OnPreparedListener() {
-            @Override
-            public void onPrepared() {
-                mAliPlayer.start();
-            }
-        });
 
         // 监听播放器信息回调，用于接收调试信息
         mAliPlayer.setOnInfoListener(infoBean -> {
