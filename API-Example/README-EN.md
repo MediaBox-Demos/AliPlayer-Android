@@ -30,22 +30,23 @@ The project adopts a **modular architecture design**, supports schema-based rout
 
 This project adopts a modular organizational approach, with a clear structure and easy scalability:
 
-| Module                  | Description                          | Main Functions                              | Entry File                  |
-|-------------------------| ------------------------------------ |---------------------------------------------|-----------------------------|
-| **App**                 | Main application module              | Application entry, feature navigation, menu | MainActivity                |
-| **Common**              | Common base module                   | Constants, utility classes                  | -                           |
-| **BasicPlayback**       | Single-Function demonstration module | Basic video playback                        | BasicPlaybackActivity       |
-| **BasicLiveStream**     | Single-Function demonstration module | Basic livestream video playback             | BasicLiveStreamActivity     |
-| **PlaybackSurfaceView** | Single-Function demonstration module | Basic video playback using SurfaceView      | PlaybackSurfaceViewActivity |
-| **PlaybackTextureView** | Single-Function demonstration module | Basic video playback using TextureView      | PlaybackTextureViewActivity |
-| **Downloader**          | Single-Function demonstration module | Video download and offline playback         | DownloaderActivity          |
-| **ExternalSubtitle**    | Single-Function demonstration module | External subtitle demo and switching        | ExternalSubtitleActivity    |
-| **FloatWindow**         | Single-Function demonstration module | Floating window playback                    | FloatWindowActivity         |
-| **MultiResolution**     | Single-Function demonstration module | Multi-bitrate/resolution switching          | MultiResolutionActivity     |
-| **PictureInPicture**    | Single-Function demonstration module | Picture-in-picture playback                 | PictureInPictureActivity    |
-| **Preload**             | Single-Function demonstration module | Video preloading (Direct URL/VOD)           | PreloadActivity             |
-| **RtsLiveStream**       | Single-Function demonstration module | RTS ultra-low latency live streaming        | RtsLiveStreamActivity       |
-| **Thumbnail**           | Single-Function demonstration module | Video thumbnail preview                     | ThumbnailActivity           |
+| Module                  | Description                          | Main Functions                                     | Entry File                  |
+|-------------------------| ------------------------------------ |----------------------------------------------------|-----------------------------|
+| **App**                 | Main application module              | Application entry, feature navigation, menu        | MainActivity                |
+| **Common**              | Common base module                   | Constants, utility classes                         | -                           |
+| **BasicPlayback**       | Single-Function demonstration module | Basic video playback                               | BasicPlaybackActivity       |
+| **BasicLiveStream**     | Single-Function demonstration module | Basic livestream video playback                    | BasicLiveStreamActivity     |
+| **PlaybackSurfaceView** | Single-Function demonstration module | Basic video playback using SurfaceView             | PlaybackSurfaceViewActivity |
+| **PlaybackTextureView** | Single-Function demonstration module | Basic video playback using TextureView             | PlaybackTextureViewActivity |
+| **Downloader**          | Single-Function demonstration module | Video download and offline playback                | DownloaderActivity          |
+| **ExternalSubtitle**    | Single-Function demonstration module | External subtitle demo and switching(SubtitleView) | ExternalSubtitleActivity    |
+| **ExternalSubtitle**    | Single-Function demonstration module | External subtitle demo and switching(Recommended)  | VttSubtitleSampleActivity   |
+| **FloatWindow**         | Single-Function demonstration module | Floating window playback                           | FloatWindowActivity         |
+| **MultiResolution**     | Single-Function demonstration module | Multi-bitrate/resolution switching                 | MultiResolutionActivity     |
+| **PictureInPicture**    | Single-Function demonstration module | Picture-in-picture playback                        | PictureInPictureActivity    |
+| **Preload**             | Single-Function demonstration module | Video preloading (Direct URL/VOD)                  | PreloadActivity             |
+| **RtsLiveStream**       | Single-Function demonstration module | RTS ultra-low latency live streaming               | RtsLiveStreamActivity       |
+| **Thumbnail**           | Single-Function demonstration module | Video thumbnail preview                            | ThumbnailActivity           |
 
 > 📌 The functional modules will be continuously expanded according to business and demonstration needs. The table only lists some representative modules. For more functions, please follow the project's subsequent updates.
 

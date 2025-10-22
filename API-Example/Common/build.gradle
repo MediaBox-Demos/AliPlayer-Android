@@ -27,7 +27,7 @@ dependencies {
 
     // 您可以参考官网获取播放器 SDK 最新版本：https://help.aliyun.com/zh/vod/developer-reference/sdk-overview-and-download
     // You can refer to the official website for SDK updates: https://help.aliyun.com/zh/vod/developer-reference/sdk-overview-and-download
-    def player_sdk_version = "7.7.0"
+    def player_sdk_version = "7.8.0"
     api "com.aliyun.sdk.android:AliyunPlayer:$player_sdk_version-full"
 
     // 播放器与Rts低延时直播组件的桥接层（AlivcArtc），版本号需要与播放器一致，需要和 Rts低延时直播组件 一起集成

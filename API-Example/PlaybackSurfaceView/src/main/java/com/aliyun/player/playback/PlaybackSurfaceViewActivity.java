@@ -59,7 +59,7 @@ public class PlaybackSurfaceViewActivity extends AppCompatActivity {
 
         // 设置标题
         if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle(getString(R.string.menu_basic_playback_title));
+            getSupportActionBar().setTitle(getString(R.string.menu_basic_playback_surface_view_title));
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 

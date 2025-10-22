@@ -3,6 +3,7 @@ package com.aliyun.player.example.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -42,6 +43,9 @@ public class MenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         if (viewType == MenuItem.MenuType.HEADER.getValue()) {
             View view = inflater.inflate(R.layout.item_menu_header, parent, false);
             return new HeaderViewHolder(view);
+        } else if (viewType == MenuItem.MenuType.EXPANDABLE_ITEM.getValue()) {
+            View view = inflater.inflate(R.layout.item_menu_expandable, parent, false);
+            return new ExpandableItemViewHolder(view);
         } else {
             View view = inflater.inflate(R.layout.item_menu_item, parent, false);
             return new ItemViewHolder(view);
@@ -54,6 +58,8 @@ public class MenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
         if (holder instanceof HeaderViewHolder) {
             ((HeaderViewHolder) holder).bind(item);
+        } else if (holder instanceof ExpandableItemViewHolder) {
+            ((ExpandableItemViewHolder) holder).bind(item, this::toggleExpansion);
         } else if (holder instanceof ItemViewHolder) {
             ((ItemViewHolder) holder).bind(item);
         }
@@ -62,6 +68,28 @@ public class MenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     @Override
     public int getItemCount() {
         return menuItems.size();
+    }
+
+    private void toggleExpansion(MenuItem item) {
+        int position = menuItems.indexOf(item);
+        if (position == -1) return;
+
+        item.setExpanded(!item.isExpanded());
+
+        if (item.isExpanded()) {
+            // 展开：在当前位置后插入子项
+            menuItems.addAll(position + 1, item.getSubItems());
+            notifyItemRangeInserted(position + 1, item.getSubItems().size());
+        } else {
+            // 收起：移除子项
+            int subItemCount = item.getSubItems().size();
+            for (int i = 0; i < subItemCount; i++) {
+                menuItems.remove(position + 1);
+            }
+            notifyItemRangeRemoved(position + 1, subItemCount);
+        }
+
+        notifyItemChanged(position); // 更新箭头状态
     }
 
     static class HeaderViewHolder extends RecyclerView.ViewHolder {
@@ -95,5 +123,36 @@ public class MenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 SchemaRouter.navigate(v.getContext(), item.getSchema());
             });
         }
+    }
+
+    static class ExpandableItemViewHolder extends RecyclerView.ViewHolder {
+        private final TextView titleTv;
+        private final TextView descriptionTv;
+        private final ImageView arrowIv;
+
+        public ExpandableItemViewHolder(@NonNull View itemView) {
+            super(itemView);
+            titleTv = itemView.findViewById(R.id.tv_item_title);
+            descriptionTv = itemView.findViewById(R.id.tv_item_description);
+            arrowIv = itemView.findViewById(R.id.iv_arrow);
+        }
+
+        public void bind(MenuItem item, OnExpandToggleListener listener) {
+            titleTv.setText(item.getTitle());
+            descriptionTv.setText(item.getDescription());
+
+            // 设置箭头状态
+            arrowIv.setRotation(item.isExpanded() ? 90f : 0f);
+
+            itemView.setOnClickListener(v -> {
+                if (listener != null) {
+                    listener.onToggle(item);
+                }
+            });
+        }
+    }
+
+    interface OnExpandToggleListener {
+        void onToggle(MenuItem item);
     }
 }

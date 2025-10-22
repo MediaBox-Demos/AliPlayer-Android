@@ -27,10 +27,10 @@ public final class Constants {
 
         // Basic features paths
         private static final String PATH_PLAYBACK = "/playback";
-
-        private static final String PATH_LIVESTREAM = "/livestream";
         private static final String PATH_PLAYBACK_SURFACE_VIEW = "/playback_surface_view";
         private static final String PATH_PLAYBACK_TEXTURE_VIEW = "/playback_texture_view";
+
+        private static final String PATH_LIVESTREAM = "/livestream";
 
         // RTS LiveStream paths
         private static final String PATH_RTS = "/rts";
@@ -43,6 +43,8 @@ public final class Constants {
 
         // ExternalSubtitle feature paths
         private static final String PATH_EXTERNAL_SUBTITLE = "/externalSubtitle";
+        private static final String PATH_VTT_SUBTITLE = "/vttSubtitle";
+
         // Multi-Resolution paths
         private static final String PATH_MULTI_RESOLUTION = "/multiResolution";
         // Preload feature paths
@@ -55,11 +57,10 @@ public final class Constants {
 
         // Complete schema URLs
         public static final String BASIC_PLAYBACK = SCHEME + "://" + HOST_BASIC + PATH_PLAYBACK;
-
-        public static final String BASIC_LIVESTREAM = SCHEME + "://" + HOST_BASIC + PATH_LIVESTREAM;
-
         public static final String BASIC_PLAYBACK_SURFACE_VIEW = SCHEME + "://" + HOST_BASIC + PATH_PLAYBACK_SURFACE_VIEW;
         public static final String BASIC_PLAYBACK_TEXTURE_VIEW = SCHEME + "://" + HOST_BASIC + PATH_PLAYBACK_TEXTURE_VIEW;
+
+        public static final String BASIC_LIVESTREAM = SCHEME + "://" + HOST_BASIC + PATH_LIVESTREAM;
 
         // RTS schema URLS
         public static final String RTS_LIVE_STREAM = SCHEME + "://" + HOST_BASIC + PATH_RTS;
@@ -69,6 +70,8 @@ public final class Constants {
 
         // External subtitle schema URL
         public static final String EXTERNAL_SUBTITLE = SCHEME + "://" + HOST_ADVANCED + PATH_EXTERNAL_SUBTITLE;
+        public static final String EXTERNAL_VTT_SUBTITLE = SCHEME + "://" + HOST_ADVANCED + PATH_VTT_SUBTITLE;
+
         // Picture in picture schema URLS
         public static final String PICTURE_IN_PICTURE = SCHEME + "://" + HOST_ADVANCED + PATH_PIP;
 
@@ -92,6 +95,9 @@ public final class Constants {
         // URL of the sample video file
         public static final String SAMPLE_VIDEO_URL = "https://alivc-demo-vod.aliyuncs.com/6b357371ef3c45f4a06e2536fd534380/53733986bce75cfc367d7554a47638c0-fd.mp4";
 
+        // URL of the sample subtitle vtt video file
+        public static final String SAMPLE_VTT_SUBTITLE_VIDEO_URL = "https://alivc-demo-cms.alicdn.com/versionProduct/resources/API-Example/vtt/1406ff70-199609dae70.mp4";
+
         // URL of the sample livestream video file
         // FIXME 请填写直播流地址，否则会影响相关功能
         public static final String SAMPLE_LIVESTREAM_VIDEO_URL = "";
@@ -106,6 +112,9 @@ public final class Constants {
 
         // URL of the subtitle file
         public static final String EXT_SUBTITLE = "https://alivc-player.oss-cn-shanghai.aliyuncs.com/API-Example-File/long-video.srt";
+
+        // URL of the subtitle vtt file
+        public static final String EXT_SUBTITLE_VTT = "https://alivc-demo-cms.alicdn.com/versionProduct/resources/API-Example/vtt/E19467B22A4F4286B462C0540F57CF46-3-3.vtt";
 
         // URL of the sample thumbnail video file
         public static final String THUMBNAIL_VIDEO_URL = "https://alivc-demo-vod.aliyuncs.com/sv/5f2e5b7f-191dbfe2558/5f2e5b7f-191dbfe2558.mp4";

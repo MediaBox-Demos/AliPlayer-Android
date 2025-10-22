@@ -134,7 +134,7 @@ public class PreloadActivity extends AppCompatActivity {
      */
     private void setupPlayer() {
         if (TextUtils.isEmpty(Constants.DataSource.SAMPLE_LIVESTREAM_VIDEO_URL)) {
-            ToastUtils.showToastLong(getString(R.string.set_stream_url_first));
+            ToastUtils.showToastLong(getString(R.string.set_preload_stream_url_first));
             return;
         }
         // 创建播放器实例

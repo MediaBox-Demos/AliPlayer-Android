@@ -7,17 +7,23 @@
     <string name="menu_header_advanced">进阶功能</string>
 
     <!-- 基础功能菜单项 -->
-    <string name="menu_basic_playback_title">基础播放</string>
-    <string name="menu_basic_playback_desc">演示如何使用阿里云播放器实现视频基础播放</string>
+    <string name="menu_expand_basic_playback_title">基础播放</string>
+    <string name="menu_expand_basic_playback_desc">演示如何使用阿里云播放器实现视频基础播放</string>
 
-    <string name="menu_basic_live_stream_title">基础直播</string>
-    <string name="menu_basic_live_stream_desc">演示如何使用阿里云播放器实现直播流基础播放</string>
+    <string name="menu_basic_playback_title">基础播放（推荐）</string>
+    <string name="menu_basic_playback_desc">基于 AliDisplayView 演示视频播放的实现方式</string>
 
     <string name="menu_basic_playback_surface_view_title">基础播放（SurfaceView）</string>
     <string name="menu_basic_playback_surface_view_desc">基于 SurfaceView 演示视频播放的实现方式</string>
 
     <string name="menu_basic_playback_texture_view_title">基础播放（TextureView）</string>
     <string name="menu_basic_playback_texture_view_desc">基于 TextureView 演示视频播放的实现方式</string>
+
+    <string name="menu_expand_live_stream_title">直播流播放</string>
+    <string name="menu_expand_live_stream_desc">支持多种直播流协议</string>
+
+    <string name="menu_basic_live_stream_title">基础直播</string>
+    <string name="menu_basic_live_stream_desc">演示如何使用阿里云播放器实现直播流基础播放</string>
 
     <string name="menu_rts_playback_title">RTS 低延迟直播播放</string>
     <string name="menu_rts_playback_desc">展示 RTS 低延迟直播播放的使用方法</string>
@@ -29,14 +35,20 @@
     <string name="menu_thumbnail_title">缩略图</string>
     <string name="menu_thumbnail_desc">展示缩略图的使用方法</string>
 
-    <string name="menu_external_subtitle_title">外挂字幕</string>
-    <string name="menu_external_subtitle_desc">外挂字幕的使用方法</string>
+    <string name="menu_expand_external_subtitle_title">外挂字幕</string>
+    <string name="menu_expand_external_subtitle_desc">演示如何使用阿里云播放器实现外挂字幕功能</string>
+
+    <string name="menu_vtt_subtitle_title">外挂字幕（推荐）</string>
+    <string name="menu_vtt_subtitle_desc">基于 VttSubtitleView 演示 SRT 和 VTT 字幕显示的实现方式</string>
+
+    <string name="menu_external_subtitle_title">外挂字幕（SubtitleView）</string>
+    <string name="menu_external_subtitle_desc">基于 SubtitleView 演示 SRT 和 VTT 字幕显示的实现方式</string>
 
     <string name="menu_multi_resolution_title">多清晰度切换</string>
     <string name="menu_multi_resolution_desc">展示多清晰度切换的使用方法</string>
 
-    <string name="menu_preload_url_title">预加载（Direct URL/VOD）</string>
-    <string name="menu_preload_url_desc">展示预加载（Direct URL/VOD）的使用方法</string>
+    <string name="menu_preload_url_title">预加载（Direct URL/VID）</string>
+    <string name="menu_preload_url_desc">展示预加载（Direct URL/VID）的使用方法</string>
 
     <string name="menu_float_window_title">悬浮窗</string>
     <string name="menu_float_window_desc">展示悬浮窗的使用方法</string>
@@ -47,6 +59,7 @@
     <!-- 通用提示信息 -->
     <string name="schema_not_supported">功能暂未实现: %s</string>
     <string name="set_stream_url_first">请先设置直播URL</string>
+    <string name="set_preload_stream_url_first">请先设置预加载URL</string>
     <string name="playback_not_implemented">播放功能未实现</string>
     <string name="preload_complete">预加载完成，可提升起播速度~</string>
     <string name="preload_canceled">预加载取消</string>

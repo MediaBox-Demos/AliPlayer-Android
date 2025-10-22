@@ -8,17 +8,23 @@
     <string name="menu_header_advanced">Advanced Features</string>
 
     <!-- Basic Feature Menu Items -->
-    <string name="menu_basic_playback_title">Basic Playback</string>
-    <string name="menu_basic_playback_desc">Demonstrates how to implement basic video playback using the ApsaraVideo Player SDK</string>
+    <string name="menu_expand_basic_playback_title">Basic Playback</string>
+    <string name="menu_expand_basic_playback_desc">Demonstrates how to implement basic video playback using ApsaraVideo Player</string>
 
-    <string name="menu_basic_live_stream_title">Basic LiveStream</string>
-    <string name="menu_basic_live_stream_desc">Demonstrates how to use Alibaba Cloud Player to achieve basic playback of live streams</string>
+    <string name="menu_basic_playback_title">Basic Playback (Recommended)</string>
+    <string name="menu_basic_playback_desc">Demonstrates video playback implementation based on AliDisplayView</string>
 
     <string name="menu_basic_playback_surface_view_title">Basic Playback (SurfaceView)</string>
-    <string name="menu_basic_playback_surface_view_desc">Shows how to implement video playback using SurfaceView</string>
+    <string name="menu_basic_playback_surface_view_desc">Demonstrates video playback implementation based on SurfaceView</string>
 
     <string name="menu_basic_playback_texture_view_title">Basic Playback (TextureView)</string>
-    <string name="menu_basic_playback_texture_view_desc">Shows how to implement video playback using TextureView</string>
+    <string name="menu_basic_playback_texture_view_desc">Demonstrates video playback implementation based on TextureView</string>
+
+    <string name="menu_expand_live_stream_title">Live Stream Playback</string>
+    <string name="menu_expand_live_stream_desc">Supports multiple live streaming protocols</string>
+
+    <string name="menu_basic_live_stream_title">Basic Live Stream</string>
+    <string name="menu_basic_live_stream_desc">Demonstrates how to implement basic live stream playback using ApsaraVideo Player</string>
 
     <string name="menu_rts_playback_title">RTS Demo</string>
     <string name="menu_rts_playback_desc">Demonstrate RTS SDK usage</string>
@@ -30,14 +36,20 @@
     <string name="menu_thumbnail_title">Thumbnail</string>
     <string name="menu_thumbnail_desc">Demonstrate Thumbnail usage</string>
 
-    <string name="menu_external_subtitle_title">ExternalSubtitle</string>
-    <string name="menu_external_subtitle_desc">Demonstrate ExternalSubtitle usage</string>
+    <string name="menu_expand_external_subtitle_title">External Subtitle</string>
+    <string name="menu_expand_external_subtitle_desc">Demonstrates how to implement external subtitle functionality using Alibaba Cloud Player</string>
+
+    <string name="menu_vtt_subtitle_title">External Subtitle (Recommended)</string>
+    <string name="menu_vtt_subtitle_desc">Demonstrates SRT and VTT subtitle display implementation based on VttSubtitleView</string>
+
+    <string name="menu_external_subtitle_title">External Subtitle (SubtitleView)</string>
+    <string name="menu_external_subtitle_desc">Demonstrates SRT and VTT subtitle display implementation based on SubtitleView</string>
 
     <string name="menu_multi_resolution_title">Multi-Resolution</string>
     <string name="menu_multi_resolution_desc">Demonstrate Multi-resolution usage</string>
 
-    <string name="menu_preload_url_title">Preload（Direct URL/VOD）</string>
-    <string name="menu_preload_url_desc">Demonstrate Preload（Direct URL/VOD） usage</string>
+    <string name="menu_preload_url_title">Preload（Direct URL/VID）</string>
+    <string name="menu_preload_url_desc">Demonstrate Preload（Direct URL/VID） usage</string>
 
     <string name="menu_float_window_title">Float-Window</string>
     <string name="menu_float_window_desc">Demonstrate Float-Window usage</string>
@@ -48,6 +60,7 @@
     <!-- Common Messages -->
     <string name="schema_not_supported">Feature not implemented yet: %s</string>
     <string name="set_stream_url_first">Please set the live streaming URL first</string>
+    <string name="set_preload_stream_url_first">Please set the preload streaming URL first</string>
     <string name="playback_not_implemented">Playback function not implemented</string>
     <string name="preload_complete">Preloading complete. It can improve playback startup speed~</string>
     <string name="preload_canceled">Preloading canceled</string>
