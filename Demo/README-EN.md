@@ -46,7 +46,7 @@ This version is the old Short Drama Scenario Demo source code released before Oc
 
 The old version of the Short Drama Scenario Demo source code in the current directory is no longer updated or maintained. If you need to obtain the latest "Micro-Drama Scenario Multi-Instance Demo," please purchase the Professional Player License first and submit a ticket to contact us for the Demo source code. For details, see:
 
-[Integrate the Latest "Micro-Drama Scenario Multi-Instance Demo"](https://help.aliyun.com/zh/vod/use-cases/micro-drama-integration-ios-player-sdk?spm=a2c4g.11186623.help-menu-29932.d_3_0_0_1_1.6afd523cYfdJM7)
+[Integrate the Latest "Micro-Drama Scenario Multi-Instance Demo"](https://help.aliyun.com/zh/vod/use-cases/micro-drama-integrated-android-player-sdk)
 
 [Obtain the Player SDK Professional License](https://help.aliyun.com/zh/vod/developer-reference/obtain-the-player-sdk-license?spm=a2c4g.11186623.help-menu-search-29932.d_15)
 
