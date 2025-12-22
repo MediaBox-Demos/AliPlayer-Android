@@ -92,7 +92,7 @@ AliPlayer-Android/
 如遇到问题或需要技术支持，可通过以下方式获取帮助：
 
 - 📘 **官方文档**：[播放器帮助中心](https://help.aliyun.com/zh/vod/)
-- 💬 **GitHub Issues**：欢迎提交反馈与建议
+- 💬 **GitHub Issues**：[欢迎提交反馈与建议](https://github.com/MediaBox-Demos/AliPlayer-Android/issues)
 - 🔍 **控制台**：[视频点播控制台](https://vod.console.aliyun.com)
 
 ---

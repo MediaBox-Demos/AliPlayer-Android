@@ -1,4 +1,4 @@
-package com.aliyun.player.playback;
+package com.aliyun.player.basicplayback;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -11,7 +11,7 @@ import com.aliyun.player.IPlayer;
 import com.aliyun.player.bean.ErrorInfo;
 import com.aliyun.player.common.Constants;
 import com.aliyun.player.common.utils.ToastUtils;
-import com.aliyun.player.source.UrlSource;
+import com.aliyun.player.source.VidAuth;
 import com.aliyun.player.videoview.AliDisplayView;
 
 /**
@@ -132,16 +132,17 @@ public class BasicPlaybackActivity extends AppCompatActivity {
      */
     private void startPlayback() {
         // Step 2: 创建播放源对象并设置播放地址
-        UrlSource urlSource = new UrlSource();
-        urlSource.setUri(Constants.DataSource.SAMPLE_VIDEO_URL);
-        mAliPlayer.setDataSource(urlSource);
+        VidAuth vidAuth = new VidAuth();
+        vidAuth.setVid(Constants.DataSource.SAMPLE_VID);
+        vidAuth.setPlayAuth(Constants.DataSource.SAMPLE_PLAY_AUTH);
+        mAliPlayer.setDataSource(vidAuth);
 
         // Step 3: 准备播放
         mAliPlayer.prepare();
         // prepare 以后可以同步调用 start 操作，onPrepared 回调完成后会自动起播
         mAliPlayer.start();
 
-        Log.d(TAG, "[Step 2&3] 开始播放视频: " + Constants.DataSource.SAMPLE_VIDEO_URL);
+        Log.d(TAG, "[Step 2&3] 开始播放视频");
     }
 
     /**

@@ -133,7 +133,7 @@ public class PreloadActivity extends AppCompatActivity {
      * Step 1: 创建播放器实例
      */
     private void setupPlayer() {
-        if (TextUtils.isEmpty(Constants.DataSource.SAMPLE_LIVESTREAM_VIDEO_URL)) {
+        if (TextUtils.isEmpty(Constants.DataSource.PRELOAD_URL)) {
             ToastUtils.showToastLong(getString(R.string.set_preload_stream_url_first));
             return;
         }
@@ -216,7 +216,7 @@ public class PreloadActivity extends AppCompatActivity {
     private void setupPreloadControls() {
         // 开始预加载
         mStartBtn.setOnClickListener(view -> {
-            startPreloadWithUrl(Constants.DataSource.PRELOAD_VID_URL);
+            startPreloadWithUrl(Constants.DataSource.PRELOAD_URL);
         });
 
         // 暂停预加载

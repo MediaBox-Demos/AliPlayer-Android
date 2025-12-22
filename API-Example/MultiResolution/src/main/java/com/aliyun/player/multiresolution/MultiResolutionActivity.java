@@ -17,11 +17,12 @@ import com.aliyun.player.common.Constants;
 import com.aliyun.player.common.utils.ToastUtils;
 import com.aliyun.player.nativeclass.PlayerConfig;
 import com.aliyun.player.nativeclass.TrackInfo;
-import com.aliyun.player.source.UrlSource;
+import com.aliyun.player.source.VidAuth;
 import com.aliyun.player.videoview.AliDisplayView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 /**
  * @author wyq
@@ -38,7 +39,7 @@ import java.util.List;
  * <p>
  * Step 2: 设置播放源 && 设置清晰度切换监听
  * - 调用 AliPlayerFactory.createAliPlayer() 创建播放器
- * - 创建 UrlSource 播放源对象
+ * - 创建 VidAuth 播放源对象
  * - 调用 setDataSource() 设置播放地址
  * - 调用 setOnTrackChangedListener() 设置播放地址
  * <p>
@@ -75,7 +76,6 @@ public class MultiResolutionActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_multi_resolution);
-
         // 设置标题
         if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle(getString(R.string.menu_multi_resolution_title));
@@ -113,19 +113,6 @@ public class MultiResolutionActivity extends AppCompatActivity {
                 ToastUtils.showToastLong(errorInfo.getExtra());
             }
         });
-
-        mAdapter.setOnItemClickListener(new MultiResolutionAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(View v, int position) {
-                if (position < 0) return;
-                if (position != mAdapter.getSelectTrackInfoIndex()) {
-                    TrackInfo trackInfo = mAdapter.getDataList().get(position);
-                    mAdapter.selectTrackInfo(trackInfo.getIndex());
-                    mAliPlayer.selectTrack(trackInfo.getIndex(), true);
-                    Log.e(TAG, "[Step 4] selectTrack(trackInfo.getIndex())" + trackInfo.getVideoWidth() + "/" + trackInfo.getIndex());
-                }
-            }
-        });
     }
 
     /**
@@ -159,7 +146,7 @@ public class MultiResolutionActivity extends AppCompatActivity {
         mAliPlayer.setOnTrackChangedListener(new IPlayer.OnTrackChangedListener() {
             @Override
             public void onChangedSuccess(TrackInfo trackInfo) {
-                if (trackInfo.getType() == TrackInfo.Type.TYPE_VIDEO) {
+                if (trackInfo.getType() == TrackInfo.Type.TYPE_VOD) {
                     Log.e(TAG, "[onChangedSuccess]" + trackInfo.getVideoWidth() + "/" + trackInfo.getIndex());
                     ToastUtils.showToastLong("切换清晰度:" + trackInfo.getVideoWidth() + "P");
                 }
@@ -189,16 +176,17 @@ public class MultiResolutionActivity extends AppCompatActivity {
      */
     private void startupPlayer() {
         // 创建播放源对象并设置播放地址
-        UrlSource urlSource = new UrlSource();
-        urlSource.setUri(Constants.DataSource.MULTI_RESOLUTION_URL);
-        mAliPlayer.setDataSource(urlSource);
+        VidAuth vidAuth = new VidAuth();
+        vidAuth.setVid(Constants.DataSource.SAMPLE_VID);
+        vidAuth.setPlayAuth(Constants.DataSource.SAMPLE_PLAY_AUTH);
+        mAliPlayer.setDataSource(vidAuth);
 
         // 准备播放
         mAliPlayer.prepare();
         // 播放视频
         mAliPlayer.start();
 
-        Log.d(TAG, "[Step 4] 开始播放视频: " + Constants.DataSource.MULTI_RESOLUTION_URL);
+        Log.d(TAG, "[Step 4] 开始播放视频");
     }
 
     /**
@@ -233,14 +221,27 @@ public class MultiResolutionActivity extends AppCompatActivity {
         if (null != data && !data.isEmpty()) {
             List<TrackInfo> result = new ArrayList<>();
             for (TrackInfo info : data) {
-                Log.e(TAG, "TrackInfoType:" + info.getType().name());
-                if (info.getType() == TrackInfo.Type.TYPE_VIDEO) {
-                    Log.e(TAG, "TrackInfo:" + info.getVideoWidth() + "/" + info.getVideoHeight());
+                Log.d(TAG, "TrackInfoType:" + info.getType().name());
+                if (info.getType() == TrackInfo.Type.TYPE_VOD) {
+                    Log.d(TAG, "TrackInfo:" + info.getVideoWidth() + "/" + info.getVideoHeight());
                     result.add(info);
                 }
             }
             mAdapter.setDataList(result);
             mAdapter.notifyItemRangeChanged(0, result.size());
+
+            mAdapter.setOnItemClickListener(new MultiResolutionAdapter.OnItemClickListener() {
+                @Override
+                public void onItemClick(View v, int position) {
+                    if (position < 0) return;
+                    if (position != mAdapter.getSelectTrackInfoIndex()) {
+                        TrackInfo trackInfo = mAdapter.getDataList().get(position);
+                        mAdapter.selectTrackInfo(trackInfo.getIndex());
+                        mAliPlayer.selectTrack(trackInfo.getIndex(), true);
+                        Log.e(TAG, "[Step 4] selectTrack(trackInfo.getIndex())" + trackInfo.getVideoWidth() + "/" + trackInfo.getIndex());
+                    }
+                }
+            });
 
             Log.d(TAG, "[Step 3] 筛选清晰度流: " + result.size());
         }

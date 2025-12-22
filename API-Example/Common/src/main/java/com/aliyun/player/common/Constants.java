@@ -89,9 +89,16 @@ public final class Constants {
 
     /**
      * Data source related constants
+     * Client Player SDK Version Requirement: When using a local-signed playback credential (JWTPlayAuth) for playback, the client player SDK version must be ≥ 7.10.0; otherwise, playback authentication will fail.
      * 数据源相关常量
+     * 客户端播放器 SDK 版本要求：使用 本地签名播放凭证（JWTPlayAuth） 进行播放时，客户端播放器 SDK 版本需要 ≥ 7.10.0，否则无法完成播放鉴权。
      */
     public static final class DataSource {
+        // VID of the sample video file
+        public static final String SAMPLE_VID = "004fc90fd71d71f0bf184531958c0402";
+
+        // PLAY auth of the sample video file
+        public static final String SAMPLE_PLAY_AUTH = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6ImFwcC0xMDAwMDAwIiwidmlkZW9JZCI6IjAwNGZjOTBmZDcxZDcxZjBiZjE4NDUzMTk1OGMwNDAyIiwiY3VycmVudFRpbWVTdGFtcCI6MTc2NjEzMTE5MTYxMywiZXhwaXJlVGltZVN0YW1wIjoxOTIzODExMTkxNjEzLCJyZWdpb25JZCI6ImNuLXNoYW5naGFpIiwicGxheUNvbnRlbnRJbmZvIjp7ImZvcm1hdHMiOiJtM3U4Iiwic3RyZWFtVHlwZSI6InZpZGVvIiwiYXV0aFRpbWVvdXQiOjE4MDB9fQ.CjqZA-6okJb2PxOZr0Jjai9gWwvaNdG-bk3LWBMzhdc";
         // URL of the sample video file
         public static final String SAMPLE_VIDEO_URL = "https://alivc-demo-vod.aliyuncs.com/6b357371ef3c45f4a06e2536fd534380/53733986bce75cfc367d7554a47638c0-fd.mp4";
 
@@ -132,6 +139,6 @@ public final class Constants {
         public static final String DOWNLOAD_VID = "6609a2f737cb43e1a79ec2bc6aee781b";
 
         // URL of the preload video file
-        public static final String PRELOAD_VID_URL = "https://alivc-demo-vod.aliyuncs.com/59f748948daa4438b42e42db755ae01e/9d44b2b86d334c6b9df649e35ad0240f.m3u8";
+        public static final String PRELOAD_URL = "https://alivc-demo-vod.aliyuncs.com/59f748948daa4438b42e42db755ae01e/9d44b2b86d334c6b9df649e35ad0240f.m3u8";
     }
 }

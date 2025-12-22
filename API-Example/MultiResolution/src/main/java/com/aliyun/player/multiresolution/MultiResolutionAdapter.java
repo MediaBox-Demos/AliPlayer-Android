@@ -58,7 +58,9 @@ public class MultiResolutionAdapter extends RecyclerView.Adapter<MultiResolution
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mOnItemClickListener.onItemClick(holder.itemView, holder.getAdapterPosition());
+                if (mOnItemClickListener != null) {
+                    mOnItemClickListener.onItemClick(holder.itemView, holder.getAdapterPosition());
+                }
             }
         });
     }
@@ -118,10 +120,10 @@ public class MultiResolutionAdapter extends RecyclerView.Adapter<MultiResolution
     /**
      * 设置 每个ViewHolder 的click 监听
      *
-     * @param mOnItemClickListener clickListener
+     * @param onItemClickListener clickListener
      */
-    public void setOnItemClickListener(OnItemClickListener mOnItemClickListener) {
-        this.mOnItemClickListener = mOnItemClickListener;
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.mOnItemClickListener = onItemClickListener;
     }
 }
 

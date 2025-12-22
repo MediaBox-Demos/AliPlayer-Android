@@ -187,7 +187,7 @@ public class ThumbnailActivity extends AppCompatActivity {
         // prepare 以后可以同步调用 start 操作，onPrepared 回调完成后会自动起播
         mAliPlayer.start();
 
-        Log.d(TAG, "[Step 3&4] 开始播放视频: " + Constants.DataSource.SAMPLE_VIDEO_URL);
+        Log.d(TAG, "[Step 3&4] 开始播放视频");
     }
 
     /**

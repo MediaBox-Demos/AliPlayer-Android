@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.aliyun.player.playback">
+    package="com.aliyun.player.playbacksurfaceview">
 
     <application>
         <activity
-            android:name="com.aliyun.player.playback.PlaybackSurfaceViewActivity"
+            android:name="com.aliyun.player.playbacksurfaceview.PlaybackSurfaceViewActivity"
             android:exported="true"
             android:theme="@style/Theme.MaterialComponents.Light">
             <intent-filter>

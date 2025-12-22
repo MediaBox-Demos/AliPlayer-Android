@@ -40,9 +40,14 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.3.0'
 
+    // === 以下为基础模块，不可注释
+    // The following are base modules, cannot be commented
+    implementation project(":Common")
+
+    // === 以下为业务模块，已实现插件化，可以注释
+    // The following are business modules, can be commented
     implementation project(":BasicPlayback")
     implementation project(":BasicLiveStream")
-    implementation project(":Common")
     implementation project(":ExternalSubtitle")
     implementation project(":PictureInPicture")
     implementation project(":RtsLiveStream")

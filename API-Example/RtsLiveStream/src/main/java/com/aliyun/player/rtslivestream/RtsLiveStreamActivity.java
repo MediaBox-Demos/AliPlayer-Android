@@ -3,10 +3,7 @@ package com.aliyun.player.rtslivestream;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,6 +17,7 @@ import com.aliyun.player.common.Constants;
 import com.aliyun.player.common.utils.ToastUtils;
 import com.aliyun.player.nativeclass.PlayerConfig;
 import com.aliyun.player.source.UrlSource;
+import com.aliyun.player.videoview.AliDisplayView;
 
 /**
  * @author wyq
@@ -30,9 +28,9 @@ import com.aliyun.player.source.UrlSource;
  * 适用于 Android 平台，集成 RtsSDK 实现 artc:// 协议拉流。
  * <p>
  * ==================== 播放器核心调用流程 ====================
- * Step 1: 加载 RTS 低延迟组件库（System.loadLibrary）
+ * Step 1: 加载 RTS 低延迟组件库 System.loadLibrary("RtsSDK")
  * Step 2: 创建播放器实例（AliPlayerFactory.createAliPlayer）
- * Step 3: 设置播放视图（SurfaceView + SurfaceHolder.Callback）
+ * Step 3: 设置播放视图（AliDisplayView）
  * Step 4: 配置播放参数（如低延迟缓冲策略）
  * Step 5: 设置播放源（UrlSource）
  * Step 6: 准备并开始播放（prepare + start）
@@ -60,6 +58,7 @@ import com.aliyun.player.source.UrlSource;
  */
 public class RtsLiveStreamActivity extends AppCompatActivity {
 
+    // Step 1:
     // 加载 RTS 低延迟直播组件动态库
     // 必须在使用播放器前完成加载
     static {
@@ -71,7 +70,7 @@ public class RtsLiveStreamActivity extends AppCompatActivity {
     // 播放器实例（核心对象）
     private AliPlayer mAliPlayer;
     // 播放画面承载视图
-    private SurfaceView mSurfaceView;
+    private AliDisplayView mAliDisplayView;
 
     // =============================================================================================
     // == Activity 生命周期处理
@@ -88,13 +87,10 @@ public class RtsLiveStreamActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        // Step 1: 初始化 UI 组件（主要是 SurfaceView）
-        initView();
-
-        // Step 2: 创建播放器实例并配置基础参数
+        // 创建播放器并绑定播放器视图
         setupPlayer();
 
-        // Step 3 & 4: 设置播放源并启动播放流程
+        // 配置数据源 + 播放参数 + 异常监听，播放数据源
         startupPlayer();
     }
 
@@ -113,39 +109,44 @@ public class RtsLiveStreamActivity extends AppCompatActivity {
     }
 
     // =============================================================================================
-    // == UI 与视图初始化
-    // =============================================================================================
-
-    /**
-     * 初始化播放器视图组件
-     * 获取布局中定义的 SurfaceView，用于承载视频画面
-     */
-    private void initView() {
-        mSurfaceView = findViewById(R.id.surface_view);
-    }
-
-    // =============================================================================================
     // == 播放器初始化与配置
     // =============================================================================================
 
     /**
-     * Step 2: 初始化播放器实例并设置基础行为
+     * Step 2 & 3: 创建播放器实例（AliPlayerFactory.createAliPlayer) 并设置播放视图（AliDisplayView）
      * <p>
      * 执行流程：
-     * 1. 使用工厂方法创建 AliPlayer 实例
-     * 2. 注册 onInfo 回调以获取调试信息（如 TraceID）
-     * 3. 绑定 SurfaceView 的生命周期，实现画面渲染
+     * <ul>
+     *   <li>1. 通过工厂创建 AliPlayer 实例</li>
+     *   <li>2. 初始化 AliDisplayView（播放器视图），并设置首选显示视图类型为 SurfaceView</li>
+     *   <li>3. 绑定播放视图到播放器</li>
+     *   <li>4. setTraceId(traceId), 启用单点追查(可选)。</li>
+     *   <li>5. 监听播放器 Info 事件，获取本次播放的 TraceID（用于问题排查）</li>
+     * </ul>
      */
     private void setupPlayer() {
         // 创建播放器对象
         mAliPlayer = AliPlayerFactory.createAliPlayer(RtsLiveStreamActivity.this);
+
+        Log.d(TAG, "[Step 2] 开始播放视频: " + mAliPlayer);
+
+        // 初始化播放器视图控件
+        mAliDisplayView = findViewById(R.id.display_view);
+
+        // 设置首选显示视图类型为 SurfaceView
+        mAliDisplayView.setPreferDisplayView(AliDisplayView.DisplayViewType.SurfaceView);
+
+        // 绑定视图
+        mAliPlayer.setDisplayView(mAliDisplayView);
 
         // 可选功能：启用单点追查（TraceID）
         // traceId 为用户/设备唯一标识（如 userID、IMEI），用于异常追踪
         // 文档：https://help.aliyun.com/zh/vod/developer-reference/single-point-tracing
         // mAliPlayer.setTraceId(traceId);
 
-        // 监听播放器信息回调，用于接收调试信息
+        // 设置 OnInfo 监听，获取TraceID
+        // 注意：这个 TraceId 和 上面的 TraceId 功能不同哦
+        // 每一次低延时播放都会有一个traceId，可用于问题排查，可以通过播放器事件回调拿到traceid
         mAliPlayer.setOnInfoListener(infoBean -> {
             if (infoBean.getCode() == InfoCode.DemuxerTraceID) {
                 String traceId = infoBean.getExtraMsg();
@@ -153,32 +154,8 @@ public class RtsLiveStreamActivity extends AppCompatActivity {
             }
         });
 
-        // 绑定 SurfaceView 的 SurfaceHolder，实现画面渲染
-        mSurfaceView.getHolder().addCallback(new SurfaceHolder.Callback() {
-            @Override
-            public void surfaceCreated(@NonNull SurfaceHolder surfaceHolder) {
-                // Surface 创建时绑定到播放器
-                if (mAliPlayer != null) {
-                    mAliPlayer.setSurface(surfaceHolder.getSurface());
-                }
-            }
+        Log.d(TAG, "[Step 3] 设置播放视图: " + mAliDisplayView);
 
-            @Override
-            public void surfaceChanged(@NonNull SurfaceHolder surfaceHolder, int format, int width, int height) {
-                // Surface 大小变化时通知播放器
-                if (mAliPlayer != null) {
-                    mAliPlayer.surfaceChanged();
-                }
-            }
-
-            @Override
-            public void surfaceDestroyed(@NonNull SurfaceHolder surfaceHolder) {
-                // Surface 销毁时解绑，避免继续渲染
-                if (mAliPlayer != null) {
-                    mAliPlayer.setSurface(null);
-                }
-            }
-        });
     }
 
     // =============================================================================================
@@ -186,29 +163,30 @@ public class RtsLiveStreamActivity extends AppCompatActivity {
     // =============================================================================================
 
     /**
-     * Step 3 & 4: 设置播放源并启动播放
+     * 设置播放源并配置启动参数
      * <p>
-     * 执行流程：
-     * 1. 获取配置的 RTS 播放地址
-     * 2. 校验地址有效性
-     * 3. 若为 artc 协议，配置低延迟参数（缓冲策略）
-     * 4. 启用 RTS 自动降级功能（网络差时切换至普通流）
-     * 5. 创建 UrlSource 并设置为播放源
-     * 6. 调用 prepare() 准备播放（异步）
-     * 7. 调用 start() 发起播放请求（prepare 完成后自动起播）
+     * <b>执行流程：</b>
+     * <ul>
+     * <li>1. 获取播放源 </li>
+     * <li>2. 配置播放参数 </li>
+     * <li>3. 设置异常监听 setOnError </li>
+     * <li>4. 启用 RTS 自动降级功能（网络差时切换至普通流）</li>
+     * <li>5. 创建 UrlSource 并设置为播放源 </li>
+     * <li>6. 播放数据源 prepare + start </li>
+     * </ul>
      */
     private void startupPlayer() {
         // 获取播放地址（来自常量配置）
-        String videoURL = Constants.DataSource.SAMPLE_RTS_URL.trim();
+        String videoUrl = Constants.DataSource.SAMPLE_RTS_URL.trim();
 
         // 校验播放地址是否为空
-        if (TextUtils.isEmpty(videoURL)) {
+        if (TextUtils.isEmpty(videoUrl)) {
             ToastUtils.showToastLong(getString(R.string.set_stream_url_first));
             return;
         }
 
         // 若为 ARTC 低延迟协议，优化播放参数以降低延迟
-        if (videoURL.contains("artc")) {
+        if (videoUrl.contains("artc")) {
             // 1. 获取当前播放器配置
             PlayerConfig config = mAliPlayer.getConfig();
 
@@ -221,15 +199,16 @@ public class RtsLiveStreamActivity extends AppCompatActivity {
 
             // 2. 将修改后的配置应用到播放器
             mAliPlayer.setConfig(config);
+
+            Log.d(TAG, "[Step 4] 播放器播放参数配置完成" );
         }
 
-        if (mAliPlayer == null) {
-            return;
-        }
 
+        // 设置播放器异常监听
         mAliPlayer.setOnErrorListener(new IPlayer.OnErrorListener() {
             @Override
             public void onError(ErrorInfo errorInfo) {
+                // toast 打印异常信息
                 ToastUtils.showToastLong(errorInfo.getExtra());
             }
         });
@@ -244,19 +223,21 @@ public class RtsLiveStreamActivity extends AppCompatActivity {
         // downgradeSource.setUri(downgradeUrl);
         // mAliPlayer.enableDowngrade(downgradeSource, config);
 
-        // Step 2: 创建播放源对象并设置播放地址
+        // 创建播放源对象并设置播放地址
         UrlSource urlSource = new UrlSource();
-        urlSource.setUri(videoURL);
+        urlSource.setUri(videoUrl);
         mAliPlayer.setDataSource(urlSource);
 
-        // Step 3: 开始准备播放（异步过程）
+        Log.d(TAG, "[Step 5] 设置播放源: " + videoUrl);
+
+        // 开始准备播放（异步过程）
         mAliPlayer.prepare();
 
         // prepare 后可立即调用 start
         // 实际起播将在 onPrepared 回调中由 SDK 自动触发
         mAliPlayer.start();
 
-        Log.d(TAG, "[Step 2&3] 开始播放视频: " + videoURL);
+        Log.d(TAG, "[Step 6] 开始播放视频: " + videoUrl);
     }
 
     // =============================================================================================
@@ -264,7 +245,7 @@ public class RtsLiveStreamActivity extends AppCompatActivity {
     // =============================================================================================
 
     /**
-     * Step 4: 释放播放器资源
+     * Step 7: 释放播放器资源
      * <p>
      * 清理流程：
      * 1. 停止播放任务
@@ -278,16 +259,16 @@ public class RtsLiveStreamActivity extends AppCompatActivity {
      */
     private void cleanupPlayer() {
         if (mAliPlayer != null) {
-            // 4.1 停止播放
+            // 停止播放
             mAliPlayer.stop();
 
-            // 4.2 销毁播放器，释放所有内部资源
+            // 销毁播放器，释放所有内部资源
             mAliPlayer.release();
 
-            // 4.3 清空引用，帮助 GC 回收
+            // 清空引用，帮助 GC 回收
             mAliPlayer = null;
 
-            Log.d(TAG, "[Step 5] 播放器资源清理完成");
+            Log.d(TAG, "[Step 7] 播放器资源清理完成");
         }
     }
 }
