@@ -16,6 +16,7 @@ import com.aliyun.player.bean.InfoCode;
 import com.aliyun.player.common.Constants;
 import com.aliyun.player.common.utils.ToastUtils;
 import com.aliyun.player.nativeclass.PlayerConfig;
+import com.aliyun.player.nativeclass.PlayerScene;
 import com.aliyun.player.source.UrlSource;
 import com.aliyun.player.videoview.AliDisplayView;
 
@@ -62,6 +63,8 @@ public class RtsLiveStreamActivity extends AppCompatActivity {
     // 加载 RTS 低延迟直播组件动态库
     // 必须在使用播放器前完成加载
     static {
+        // 请注意：如需使用 RTS 超低延迟直播，必须加载 RTS SDK 动态库；
+        // 未加载时，可能导致播放失败，或回退至 HTTP-FLV 播放模式，从而显著增加播放延迟。
         System.loadLibrary("RtsSDK");
     }
 
@@ -127,6 +130,9 @@ public class RtsLiveStreamActivity extends AppCompatActivity {
     private void setupPlayer() {
         // 创建播放器对象
         mAliPlayer = AliPlayerFactory.createAliPlayer(RtsLiveStreamActivity.this);
+
+        // 设置播放场景
+        mAliPlayer.setPlayerScene(PlayerScene.RTS_LIVE);
 
         Log.d(TAG, "[Step 2] 开始播放视频: " + mAliPlayer);
 

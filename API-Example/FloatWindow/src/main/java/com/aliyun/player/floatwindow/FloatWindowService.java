@@ -17,6 +17,7 @@ import com.aliyun.player.IPlayer;
 import com.aliyun.player.bean.ErrorInfo;
 import com.aliyun.player.common.Constants;
 import com.aliyun.player.common.utils.ToastUtils;
+import com.aliyun.player.nativeclass.PlayerScene;
 import com.aliyun.player.source.UrlSource;
 import com.aliyun.player.videoview.AliDisplayView;
 
@@ -157,6 +158,10 @@ public class FloatWindowService extends Service {
      */
     private void setupPlayer() {
         mAliPlayer = AliPlayerFactory.createAliPlayer(getApplicationContext());
+
+        // 设置播放场景
+        mAliPlayer.setPlayerScene(PlayerScene.LONG);
+
         // 播放完成后
         mAliPlayer.setOnCompletionListener(new IPlayer.OnCompletionListener() {
             @Override

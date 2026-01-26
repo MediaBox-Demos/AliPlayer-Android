@@ -43,6 +43,7 @@ public final class Constants {
 
         // ExternalSubtitle feature paths
         private static final String PATH_EXTERNAL_SUBTITLE = "/externalSubtitle";
+        private static final String PATH_STYLER_SUBTITLE = "/subtitleStyler";
         private static final String PATH_VTT_SUBTITLE = "/vttSubtitle";
 
         // Multi-Resolution paths
@@ -70,6 +71,7 @@ public final class Constants {
 
         // External subtitle schema URL
         public static final String EXTERNAL_SUBTITLE = SCHEME + "://" + HOST_ADVANCED + PATH_EXTERNAL_SUBTITLE;
+        public static final String EXTERNAL_SUBTITLE_STYLER = SCHEME + "://" + HOST_ADVANCED + PATH_STYLER_SUBTITLE;
         public static final String EXTERNAL_VTT_SUBTITLE = SCHEME + "://" + HOST_ADVANCED + PATH_VTT_SUBTITLE;
 
         // Picture in picture schema URLS

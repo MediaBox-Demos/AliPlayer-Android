@@ -46,10 +46,11 @@ public class MenuConfig {
         items.add(MenuItem.createItem(context.getString(R.string.menu_float_window_title), Constants.Schema.FLOAT_WINDOW_URL, context.getString(R.string.menu_float_window_desc)));
 
         // 外挂字幕 - 可展开项
-        MenuItem vttSubtitle = MenuItem.createItem(context.getString(R.string.menu_vtt_subtitle_title), Constants.Schema.EXTERNAL_VTT_SUBTITLE, context.getString(R.string.menu_vtt_subtitle_desc));
-        MenuItem subtitle = MenuItem.createItem(context.getString(R.string.menu_external_subtitle_title), Constants.Schema.EXTERNAL_SUBTITLE, context.getString(R.string.menu_external_subtitle_desc));
+        MenuItem vttSubtitle = MenuItem.createItem(context.getString(R.string.menu_vtt_subtitle_title), Constants.Schema.EXTERNAL_SUBTITLE, context.getString(R.string.menu_vtt_subtitle_desc));
+        MenuItem subtitleStyler = MenuItem.createItem(context.getString(R.string.menu_subtitle_styler_title), Constants.Schema.EXTERNAL_SUBTITLE_STYLER, context.getString(R.string.menu_subtitle_styler_desc));
 
-        List<MenuItem> subtitleSubItems = Arrays.asList(vttSubtitle, subtitle);
+
+        List<MenuItem> subtitleSubItems = Arrays.asList(vttSubtitle, subtitleStyler);
         items.add(MenuItem.createExpandableItem(context.getString(R.string.menu_expand_external_subtitle_title), context.getString(R.string.menu_expand_external_subtitle_desc), subtitleSubItems));
 
         items.add(MenuItem.createItem(context.getString(R.string.menu_thumbnail_title), Constants.Schema.THUMBNAIL, context.getString(R.string.menu_thumbnail_desc)));
