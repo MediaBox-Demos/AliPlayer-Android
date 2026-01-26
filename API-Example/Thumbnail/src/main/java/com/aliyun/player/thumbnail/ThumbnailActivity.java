@@ -15,6 +15,7 @@ import com.aliyun.player.bean.InfoBean;
 import com.aliyun.player.bean.InfoCode;
 import com.aliyun.player.common.Constants;
 import com.aliyun.player.common.utils.ToastUtils;
+import com.aliyun.player.nativeclass.PlayerScene;
 import com.aliyun.player.source.UrlSource;
 import com.aliyun.player.videoview.AliDisplayView;
 import com.aliyun.thumbnail.ThumbnailBitmapInfo;
@@ -108,15 +109,6 @@ public class ThumbnailActivity extends AppCompatActivity {
         setPlayerPrepared();
 
         // Step 6: 设置缩略图相关监听及缩略图实现
-        /**
-         * 注：Step 6有两种方式进行设置
-         * 可参考：https://help.aliyun.com/zh/vod/developer-reference/faq-about-apsaravideo-player-sdk-for-android
-         * 可以使用mAliPlayer.getMediaInfo()的方式来获取缩略图
-         * 注：若当前使用VID方式播放，创建ThumbnailHelper对象可参考下方注释
-         * getThumbnail onPrepared()监听中调用
-         * List<Thumbnail> thumbnailList = mAliPlayer.getMediaInfo().getThumbnailList();
-         * getThumbnail(thumbnailList.get(0).mURL);
-         */
         getThumbnail(Constants.DataSource.THUMBNAIL_URL);
 
         // Step 7 缩略图视图显示
@@ -141,6 +133,9 @@ public class ThumbnailActivity extends AppCompatActivity {
         if (mAliPlayer == null) {
             return;
         }
+
+        // 设置播放场景
+        mAliPlayer.setPlayerScene(PlayerScene.LONG);
 
         mAliPlayer.setOnErrorListener(new IPlayer.OnErrorListener() {
             @Override

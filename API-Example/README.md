@@ -37,8 +37,8 @@ Language: 中文简体 | [English](README-EN.md)
 | **PlaybackSurfaceView** | 单功能演示模块 | 基于 SurfaceView 的视频基础播放演示 | PlaybackSurfaceViewActivity |
 | **PlaybackTextureView** | 单功能演示模块 | 基于 TextureView 视频基础播放演示  | PlaybackTextureViewActivity |
 | **Downloader**          | 单功能演示模块 | 视频下载与离线播放                | DownloaderActivity          |
-| **ExternalSubtitle**    | 单功能演示模块 | 外挂字幕演示与切换（SubtitleView）  | ExternalSubtitleActivity    |
-| **ExternalSubtitle**    | 单功能演示模块 | 外挂字幕演示与切换（推荐）            | VttSubtitleSampleActivity   |
+| **ExternalSubtitle**    | 单功能演示模块 | 使用 VttSubtitleView 加载 .vtt 字幕，支持时间轴与基础样式（如粗体、斜体），推荐用于新项目            | ExternalSubtitleActivity   |
+| **ExternalSubtitle**    | 单功能演示模块 | 基于 .vtt 与 VttSubtitleView，通过 CustomStylerWebVttResolver 实现颜色、字体、位置等深度自定义           | CustomStyleExternalSubtitleActivity   |
 | **FloatWindow**         | 单功能演示模块 | 悬浮窗播放                    | FloatWindowActivity         |
 | **MultiResolution**     | 单功能演示模块 | 多码率/分辨率切换                | MultiResolutionActivity     |
 | **PictureInPicture**    | 单功能演示模块 | 画中画播放                    | PictureInPictureActivity    |

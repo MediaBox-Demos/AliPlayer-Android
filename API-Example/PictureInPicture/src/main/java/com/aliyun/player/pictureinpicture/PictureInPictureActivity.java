@@ -18,6 +18,7 @@ import com.aliyun.player.IPlayer;
 import com.aliyun.player.bean.ErrorInfo;
 import com.aliyun.player.common.Constants;
 import com.aliyun.player.common.utils.ToastUtils;
+import com.aliyun.player.nativeclass.PlayerScene;
 import com.aliyun.player.source.VidAuth;
 import com.aliyun.player.videoview.AliDisplayView;
 
@@ -143,6 +144,9 @@ public class PictureInPictureActivity extends AppCompatActivity {
         if (mAliPlayer == null) {
             return;
         }
+
+        // 设置播放场景
+        mAliPlayer.setPlayerScene(PlayerScene.LONG);
 
         mAliPlayer.setOnErrorListener(new IPlayer.OnErrorListener() {
             @Override

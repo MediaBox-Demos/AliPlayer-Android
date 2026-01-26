@@ -39,8 +39,8 @@ This project adopts a modular organizational approach, with a clear structure an
 | **PlaybackSurfaceView** | Single-Function demonstration module | Basic video playback using SurfaceView             | PlaybackSurfaceViewActivity |
 | **PlaybackTextureView** | Single-Function demonstration module | Basic video playback using TextureView             | PlaybackTextureViewActivity |
 | **Downloader**          | Single-Function demonstration module | Video download and offline playback                | DownloaderActivity          |
-| **ExternalSubtitle**    | Single-Function demonstration module | External subtitle demo and switching(SubtitleView) | ExternalSubtitleActivity    |
-| **ExternalSubtitle**    | Single-Function demonstration module | External subtitle demo and switching(Recommended)  | VttSubtitleSampleActivity   |
+| **ExternalSubtitle**    | Single-Function demonstration module | Loads .vtt subtitles via VttSubtitleView with support for timing and basic styling (e.g., bold, italic). Recommended for new projects  | ExternalSubtitleActivity   |
+| **ExternalSubtitle**    | Single-Function demonstration module | Based on .vtt and VttSubtitleView, enables advanced styling (color, font, position, etc.) via CustomStylerWebVttResolver.              | CustomStyleExternalSubtitleActivity   |
 | **FloatWindow**         | Single-Function demonstration module | Floating window playback                           | FloatWindowActivity         |
 | **MultiResolution**     | Single-Function demonstration module | Multi-bitrate/resolution switching                 | MultiResolutionActivity     |
 | **PictureInPicture**    | Single-Function demonstration module | Picture-in-picture playback                        | PictureInPictureActivity    |

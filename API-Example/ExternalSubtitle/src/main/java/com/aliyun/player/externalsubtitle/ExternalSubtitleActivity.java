@@ -1,7 +1,5 @@
 package com.aliyun.player.externalsubtitle;
 
-import android.content.res.Resources;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -16,16 +14,18 @@ import com.aliyun.player.IPlayer;
 import com.aliyun.player.bean.ErrorInfo;
 import com.aliyun.player.common.Constants;
 import com.aliyun.player.common.utils.ToastUtils;
+import com.aliyun.player.nativeclass.PlayerScene;
 import com.aliyun.player.source.UrlSource;
 import com.aliyun.player.videoview.AliDisplayView;
-import com.aliyun.subtitle.SubtitleView;
+import com.aliyun.subtitle.SubTitleBase;
+import com.cicada.player.utils.webVtt.VttSubtitleView;
 
 /**
  * @author junhuiYe
- * @date 2025/6/6
- * @brief 播放器字幕功能演示 - 阿里云播放器 SDK 最佳实践
+ * @date 2025/10/20
+ * @brief 播放器VTT字幕功能演示 - 阿里云播放器 SDK 最佳实践
  * <p>
- * 本示例展示了如何使用阿里云播放器 SDK 实现字幕功能演示
+ * 本示例展示了如何使用阿里云播放器 SDK 实现VTT字幕功能演示
  * <p>
  * ==================== 播放器 API 调用步骤 ====================
  * Step 1: 创建播放器实例
@@ -34,7 +34,7 @@ import com.aliyun.subtitle.SubtitleView;
  * <p>
  * Step 2: 初始化视图
  * - 加载 AliDisplayView 并设置视图回调
- * - 加载 外挂字幕视图
+ * - 加载 VTT字幕视图
  * <p>
  * Step 3: 设置播放源
  * - 创建 UrlSource 播放源对象
@@ -49,22 +49,23 @@ import com.aliyun.subtitle.SubtitleView;
  * <p>
  * Step 6: 设置字幕监听
  * - 调用 setOnSubtitleDisplayListener 字幕监听
+ * - 调用 setOnVideoSizeChangedListener 视频尺寸变化监听（VTT字幕必需）
  * <p>
  * Step 7: 清理资源
  * - 调用 stop() 停止播放
  * - 调用 release() 销毁播放器实例
- * - 清空相关引用，避免内存泄漏
+ * - 销毁字幕视图，清理相关引用，避免内存泄漏
  */
 public class ExternalSubtitleActivity extends AppCompatActivity {
-    private static final String TAG = "ExternalSubtitle";
+    private static final String TAG = "VttSubtitleSample";
 
     // 可选（非必需）：播放起始位置
     private static final long VIDEO_START_TIME_MILLS = 8 * 1000;
 
     // 根布局
     private FrameLayout mRootFrameLayout;
-    // 字幕视图
-    private SubtitleView mSubtitleView;
+    // VTT字幕视图
+    private VttSubtitleView mVttSubtitleView;
 
     // 播放器实例
     private AliPlayer mAliPlayer;
@@ -77,7 +78,7 @@ public class ExternalSubtitleActivity extends AppCompatActivity {
         setContentView(R.layout.activity_external_subtitle);
         // 设置标题
         if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle(R.string.menu_external_subtitle_title);
+            getSupportActionBar().setTitle(R.string.menu_vtt_subtitle_title);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
@@ -94,30 +95,32 @@ public class ExternalSubtitleActivity extends AppCompatActivity {
         setupPlayerListeners();
 
         // Step 7：设置字幕监听
-        setExternalSubtitleListener();
+        setVttSubtitleListener();
     }
 
     /**
-     * 初始化字幕视图
+     * 初始化VTT字幕视图
      */
     private void initSubtitleView() {
-        // 用于显示SRT和VTT字幕
-        mSubtitleView = new SubtitleView(this);
+        // 用于显示VTT字幕
+        mVttSubtitleView = new VttSubtitleView(this);
 
-        // 视图样式设置
-        SubtitleView.DefaultValueBuilder defaultValueBuilder = new SubtitleView.DefaultValueBuilder();
-        defaultValueBuilder.setSize(64);
-        defaultValueBuilder.setColor(String.format("#%08X", Color.RED));
-        mSubtitleView.setDefaultValue(defaultValueBuilder);
+        // 设置字幕的显示位置 - 添加到布局中央
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
+                FrameLayout.LayoutParams.WRAP_CONTENT,
+                FrameLayout.LayoutParams.WRAP_CONTENT
+        );
+        params.gravity = Gravity.CENTER; // 添加到布局中央
 
-        // 设置字幕的显示位置
-        FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT);
-        layoutParams.setMargins(0, 0, 0, Resources.getSystem().getDisplayMetrics().heightPixels / 3 + 120);
-        layoutParams.gravity = Gravity.CENTER;
-        mSubtitleView.setLayoutParams(layoutParams);
+        // 将VTT字幕View添加到根布局视图中
+        mRootFrameLayout.addView(mVttSubtitleView, params);
+    }
 
-        // 将字幕View添加到根布局视图中
-        mRootFrameLayout.addView(mSubtitleView);
+    /**
+     * 销毁VTT字幕视图
+     */
+    private void destroySubtitleView() {
+        mVttSubtitleView.destroy();
     }
 
     /**
@@ -139,6 +142,9 @@ public class ExternalSubtitleActivity extends AppCompatActivity {
             return;
         }
 
+        // 设置播放场景
+        mAliPlayer.setPlayerScene(PlayerScene.LONG);
+
         mAliPlayer.setOnErrorListener(new IPlayer.OnErrorListener() {
             @Override
             public void onError(ErrorInfo errorInfo) {
@@ -152,16 +158,16 @@ public class ExternalSubtitleActivity extends AppCompatActivity {
      */
     private void initViews() {
         // 根布局
-        mRootFrameLayout = findViewById(R.id.root_layout);
+        mRootFrameLayout = findViewById(R.id.vtt_root_layout);
 
         // 播放器视图
-        mAliDisplayView = findViewById(R.id.ali_display_view);
+        mAliDisplayView = findViewById(R.id.vtt_sample_ali_display_view);
         // 可以通过 setPreferDisplayView() 设置播放视图类型
         mAliDisplayView.setPreferDisplayView(AliDisplayView.DisplayViewType.SurfaceView);
 
         mAliPlayer.setDisplayView(mAliDisplayView);
 
-        // 字幕视图
+        // VTT字幕视图
         initSubtitleView();
         Log.d(TAG, "[Step 2] 视图初始化完成");
     }
@@ -172,7 +178,7 @@ public class ExternalSubtitleActivity extends AppCompatActivity {
     private void startPlayback() {
         // Step 3: 创建播放源对象并设置播放地址
         UrlSource urlSource = new UrlSource();
-        urlSource.setUri(Constants.DataSource.SAMPLE_VIDEO_URL);
+        urlSource.setUri(Constants.DataSource.SAMPLE_VTT_SUBTITLE_VIDEO_URL);
         mAliPlayer.setDataSource(urlSource);
 
         // 可选（非必需）：设置视频播放起始位置
@@ -195,7 +201,7 @@ public class ExternalSubtitleActivity extends AppCompatActivity {
             @Override
             public void onPrepared() {
                 // step: 5 字幕设置（需要在 onPrepared 中进行设置）
-                mAliPlayer.addExtSubtitle(Constants.DataSource.EXT_SUBTITLE);
+                mAliPlayer.addExtSubtitle(Constants.DataSource.EXT_SUBTITLE_VTT);
                 Log.d(TAG, "[Step 5] 添加外挂字幕");
             }
         });
@@ -204,7 +210,7 @@ public class ExternalSubtitleActivity extends AppCompatActivity {
     /**
      * Step 6：设置字幕监听
      */
-    private void setExternalSubtitleListener() {
+    private void setVttSubtitleListener() {
         mAliPlayer.setOnSubtitleDisplayListener(new IPlayer.OnSubtitleDisplayListener() {
             @Override
             public void onSubtitleExtAdded(int trackIndex, String url) {
@@ -214,22 +220,49 @@ public class ExternalSubtitleActivity extends AppCompatActivity {
 
             @Override
             public void onSubtitleShow(int trackIndex, long id, String data) {
-                // 字幕
-                SubtitleView.Subtitle subtitle = new SubtitleView.Subtitle();
-                subtitle.id = String.valueOf(id);
-                subtitle.content = data;
-                // 显示字幕
-                mSubtitleView.show(subtitle);
+                // 显示VTT字幕
+                if (mVttSubtitleView != null) {
+                    mVttSubtitleView.show(id, data);
+                }
             }
 
             @Override
             public void onSubtitleHide(int trackIndex, long id) {
-                // 去除字幕
-                mSubtitleView.dismiss(String.valueOf(id));
+                // 隐藏VTT字幕
+                if (mVttSubtitleView != null) {
+                    mVttSubtitleView.dismiss(id);
+                }
             }
 
             @Override
             public void onSubtitleHeader(int trackIndex, String header) {
+                // 设置VTT字幕头部信息
+                if (mVttSubtitleView != null) {
+                    mVttSubtitleView.setVttHeader(header);
+                }
+            }
+        });
+
+        // 设置VideoSizeChangedListener，下述流程为必要流程，需要将数据回传到 vttSubtitleView中
+        mAliPlayer.setOnVideoSizeChangedListener(new IPlayer.OnVideoSizeChangedListener() {
+            @Override
+            public void onVideoSizeChanged(int width, int height) {
+                // 获取视图尺寸
+                int viewWidth = mRootFrameLayout.getWidth();
+                int viewHeight = mRootFrameLayout.getHeight();
+                IPlayer.ScaleMode mScaleMode = mAliPlayer.getScaleMode();
+
+                // 计算视频渲染尺寸
+                SubTitleBase.VideoDimensions videoDimensions =
+                        SubTitleBase.getVideoDimensionsWhenRenderChanged(width, height, viewWidth, viewHeight, mScaleMode);
+
+                // 设置VTT字幕视图的视频渲染尺寸
+                if (mVttSubtitleView != null) {
+                    mVttSubtitleView.setVideoRenderSize(videoDimensions.videoDisplayWidth, videoDimensions.videoDisplayHeight);
+                }
+
+                Log.d(TAG, "[Step 6] 视频尺寸变化 - 原始尺寸: " + width + "x" + height +
+                        ", 渲染尺寸: " + videoDimensions.videoDisplayWidth + "x" + videoDimensions.videoDisplayHeight);
             }
         });
     }
@@ -244,6 +277,7 @@ public class ExternalSubtitleActivity extends AppCompatActivity {
     protected void onDestroy() {
         // Step 7：清理资源
         cleanupPlayer();
+        destroySubtitleView();
 
         super.onDestroy();
     }

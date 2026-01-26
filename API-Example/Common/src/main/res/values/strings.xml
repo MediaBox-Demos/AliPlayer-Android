@@ -41,8 +41,8 @@
     <string name="menu_vtt_subtitle_title">外挂字幕（推荐）</string>
     <string name="menu_vtt_subtitle_desc">基于 VttSubtitleView 演示 SRT 和 VTT 字幕显示的实现方式</string>
 
-    <string name="menu_external_subtitle_title">外挂字幕（SubtitleView）</string>
-    <string name="menu_external_subtitle_desc">基于 SubtitleView 演示 SRT 和 VTT 字幕显示的实现方式</string>
+    <string name="menu_subtitle_styler_title">外挂字幕（自定义样式）</string>
+    <string name="menu_subtitle_styler_desc">基于 VttSubtitleView 与 CustomStylerWebVttResolver，支持自定义字幕颜色、字体、位置等样式</string>
 
     <string name="menu_multi_resolution_title">多清晰度切换</string>
     <string name="menu_multi_resolution_desc">展示多清晰度切换的使用方法</string>

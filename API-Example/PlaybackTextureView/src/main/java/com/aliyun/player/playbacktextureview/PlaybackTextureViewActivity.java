@@ -15,6 +15,7 @@ import com.aliyun.player.IPlayer;
 import com.aliyun.player.bean.ErrorInfo;
 import com.aliyun.player.common.Constants;
 import com.aliyun.player.common.utils.ToastUtils;
+import com.aliyun.player.nativeclass.PlayerScene;
 import com.aliyun.player.source.VidAuth;
 
 /**
@@ -149,6 +150,9 @@ public class PlaybackTextureViewActivity extends AppCompatActivity {
         // 传入 traceId 后，埋点日志上报功能开启，后续可以使用播放质量监控、单点追查和视频播放统计功能。
         // 文档：https://help.aliyun.com/zh/vod/developer-reference/single-point-tracing
         // mAliPlayer.setTraceId(traceId);
+
+        // 设置播放场景
+        mAliPlayer.setPlayerScene(PlayerScene.LONG);
 
         Log.d(TAG, "[Step 0] 播放器创建完成: " + mAliPlayer);
     }

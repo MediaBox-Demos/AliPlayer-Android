@@ -42,8 +42,8 @@
     <string name="menu_vtt_subtitle_title">External Subtitle (Recommended)</string>
     <string name="menu_vtt_subtitle_desc">Demonstrates SRT and VTT subtitle display implementation based on VttSubtitleView</string>
 
-    <string name="menu_external_subtitle_title">External Subtitle (SubtitleView)</string>
-    <string name="menu_external_subtitle_desc">Demonstrates SRT and VTT subtitle display implementation based on SubtitleView</string>
+    <string name="menu_subtitle_styler_title">External Subtitle (Custom Styling)</string>
+    <string name="menu_subtitle_styler_desc">Demonstrates custom subtitle styling (e.g., color, font, position) using VttSubtitleView and CustomStylerWebVttResolver</string>
 
     <string name="menu_multi_resolution_title">Multi-Resolution</string>
     <string name="menu_multi_resolution_desc">Demonstrate Multi-resolution usage</string>

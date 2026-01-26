@@ -5,23 +5,10 @@
 
     <application>
         <activity
-            android:name=".VttSubtitleSampleActivity"
+            android:name=".ExternalSubtitleActivity"
             android:exported="false"
             android:theme="@style/Theme.MaterialComponents.Light"
             tools:ignore="AppLinkUrlError">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <data
-                    android:host="advanced"
-                    android:path="/vttSubtitle"
-                    android:scheme="demo" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".ExternalSubtitleActivity"
-            android:exported="true"
-            android:theme="@style/Theme.MaterialComponents.Light">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -31,6 +18,21 @@
                     android:scheme="demo" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".custom_webvtt.CustomStyleExternalSubtitleActivity"
+            android:exported="false"
+            android:theme="@style/Theme.MaterialComponents.Light"
+            tools:ignore="AppLinkUrlError">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data
+                    android:host="advanced"
+                    android:path="/subtitleStyler"
+                    android:scheme="demo" />
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>
