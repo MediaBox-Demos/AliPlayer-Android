@@ -137,8 +137,6 @@ public class MultiResolutionActivity extends AppCompatActivity {
         mAliDisplayView.setPreferDisplayView(AliDisplayView.DisplayViewType.SurfaceView);
         mAliPlayer.setDisplayView(mAliDisplayView);
 
-        // 设置循环播放
-        mAliPlayer.setLoop(true);
         // 启用快切模式
         PlayerConfig config = mAliPlayer.getConfig();
         if (null != config) {

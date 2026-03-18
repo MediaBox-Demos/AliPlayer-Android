@@ -29,6 +29,9 @@ AliPlayer-Android/
 ├── SDK/                      # SDK files and documentation
 │   ├── README.md             # SDK usage instructions (Chinese)
 │   └── README-EN.md          # SDK usage instructions (English)
+├── PlayerKit/                # Player with UI integration solution
+│   ├── README.md             # PlayerKit usage instructions (Chinese)
+│   └── README-EN.md          # PlayerKit usage instructions (English)
 ├── README.md                 # Project description (Chinese)
 ├── README-EN.md              # Project description (English)
 └── LICENSE                   # Open source license
@@ -47,6 +50,10 @@ AliPlayer-Android/
 * **📦 SDK - Player SDK Resources**
 
   Contains complete integration guide, API documentation and troubleshooting resources for ApsaraVideo Player SDK.
+
+* **🎨 PlayerKit - Player with UI Integration Solution**
+
+  Provides low-code, extensible player UI components and scenario-based solutions with minimal code integration.
 
 ---
 
@@ -67,6 +74,7 @@ Choose the project that suits your needs:
 | --------------- | ------------------------------------------------------ | ---------------------------------------------------------- |
 | **Demo**        | Complete feature experience and scenario demonstration | [View Demo Setup Guide](./Demo/README-EN.md)               |
 | **API-Example** | Single feature learning and API verification           | [View API-Example Setup Guide](./API-Example/README-EN.md) |
+| **PlayerKit**   | Low-code player with UI integration                    | [View PlayerKit Guide](./PlayerKit/README-EN.md)           |
 
 ----
 

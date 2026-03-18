@@ -131,3 +131,13 @@ After completing the configuration, please rebuild and run the project. The SDK 
 ### **🧪 Verify Results**
 
 After launching the app, you will enter the main menu page. Click any feature item to navigate to the corresponding playback demo page.
+
+## **📌 Quick Integration**
+
+The diagram below illustrates the key steps to integrate the Player SDK, helping you quickly implement video playback:
+
+![BasicPlayback](BasicPlayback/BasicPlayback.png)
+
+> For more details, please refer to the official Quick Start documentation: [Android Player Quick Start](https://help.aliyun.com/en/vod/developer-reference/android-player-quick-start)
+
+💡 **Tip**: If you want to integrate the player with lower code cost, **we recommend using AliPlayerKit**. Please visit the [GitHub repository](https://github.com/aliyun/PlayerKit-Android) to get the source code, and refer to the [online documentation](https://aliyun.github.io/PlayerKit-Android/) for integration.

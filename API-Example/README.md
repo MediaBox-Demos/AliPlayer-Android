@@ -126,3 +126,12 @@ Language: 中文简体 | [English](README-EN.md)
 ### **🧪 验证结果**
 应用启动后将进入主功能菜单页面，点击任意功能项即可跳转至对应的播放演示页面。
 
+## **📌 快速接入**
+
+下图展示了播放器 SDK 的几大接入步骤，助您快速实现视频起播：
+
+![BasicPlayback](BasicPlayback/BasicPlayback.png)
+
+> 更多详情请参考官网《快速开始》文档：[Android 播放器快速开始](https://help.aliyun.com/zh/vod/developer-reference/android-player-quick-start)
+
+💡 **提示**：如果您希望以更低的代码成本快速接入播放器，**推荐使用 AliPlayerKit**。请访问 [GitHub 仓库](https://github.com/aliyun/PlayerKit-Android) 获取源码，并结合 [在线文档](https://aliyun.github.io/PlayerKit-Android/) 完成接入。

@@ -29,6 +29,9 @@ AliPlayer-Android/
 ├── SDK/                      # SDK 文件与文档
 │   ├── README.md             # SDK 使用说明（中文）
 │   └── README-EN.md          # SDK 使用说明（英文）
+├── PlayerKit/                # 播放器含 UI 集成方案
+│   ├── README.md             # PlayerKit 使用说明（中文）
+│   └── README-EN.md          # PlayerKit 使用说明（英文）
 ├── README.md                 # 项目说明（中文）
 ├── README-EN.md              # 项目说明（英文）
 └── LICENSE                   # 开源协议
@@ -47,6 +50,10 @@ AliPlayer-Android/
 * **📦 SDK - 播放器 SDK 资源**
 
   包含阿里云播放器 SDK 的完整集成指南、API 文档和故障排查资源。
+
+* **🎨 PlayerKit - 播放器含 UI 集成方案**
+
+  提供低代码、可扩展的播放器 UI 组件与场景化解决方案，支持极简接入。
 
 ---
 
@@ -67,6 +74,7 @@ AliPlayer-Android/
 | --------------- | ----------------------- | ---------------------------------------------------- |
 | **Demo**        | 完整功能体验与场景演示  | [查看 Demo 运行指南](./Demo/README.md)               |
 | **API-Example** | 单一功能学习与 API 验证 | [查看 API-Example 运行指南](./API-Example/README.md) |
+| **PlayerKit**   | 低代码播放器含 UI 集成  | [查看 PlayerKit 指南](./PlayerKit/README.md)         |
 
 ----
 
