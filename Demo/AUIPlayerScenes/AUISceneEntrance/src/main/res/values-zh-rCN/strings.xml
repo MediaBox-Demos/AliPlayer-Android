@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="player_episode">短剧播放</string>
+    <string name="player_tab_layout">Fragment嵌套播放</string>
+    <string name="player_short_playlist_theater_msg">适用于短剧剧场场景</string>
+    <string name="player_tablayout_feed_msg">Fragment 嵌套 ViewPager播放</string>
+</resources>

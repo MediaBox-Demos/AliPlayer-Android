@@ -1,0 +1,68 @@
+plugins {
+    id 'com.android.library'
+}
+
+android {
+
+    /// 集成FAQ (Integration FAQ)
+    /// <!!!> 当您项目的AGP版本高于AGP 8时，如8.3.2，请添加声明namespace的代码
+    /// <!!!> When the AGP version of your project is higher than AGP 8, such as 8.3.2, please add code declaring the namespace.
+    /// <!!!> 当您项目的AGP版本低于AGP 7时，如4.0.1，请移除声明namespace的代码
+    /// <!!!> When the AGP version of your project is lower than AGP 7, such as 4.0.1, please remove the code that declares namespace
+    namespace = "com.alivc.player.scenes.shortplaylist"
+
+    compileSdkVersion 33
+    buildToolsVersion "33.0.2"
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 33
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: 'shortplaylist']
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    /// 集成FAQ (Integration FAQ)
+    /// <!!!> 如果在您的项目中已经引入了相同的第三方组件库，请调整版本号以确保兼容性，并避免潜在的冲突。
+    /// <!!!> If the same third-party component library is already included in your project, please adjust the version number to ensure compatibility and avoid potential conflicts.
+
+    // Material Design 组件库，用于实现美观的UI元素和布局
+    // Material Design component library for building beautiful UI elements and layouts
+    implementation 'com.google.android.material:material:1.6.0'
+
+    // Glide库，图片加载和缓存的工具
+    // Glide library for loading and caching images
+    implementation 'com.github.bumptech.glide:glide:4.13.0'
+    // Gson库，用于将Java对象与JSON之间进行转换
+    // Gson library for converting Java objects to and from JSON
+    implementation 'com.google.code.gson:gson:2.8.0'
+
+    implementation 'com.alibaba:arouter-api:1.5.2'
+    annotationProcessor 'com.alibaba:arouter-compiler:1.5.2'
+
+    implementation 'com.squareup.okhttp3:okhttp:4.8.1'
+
+    // Based on ShortVideoList library. You can refer to the README.md file in the AUIShortVideoList directory for more information.
+    implementation project(':AUIPlayerKits:AUIShortVideoList')
+    /// 集成FAQ (Integration FAQ)
+    /// <!!!> If the AUIShortVideoList module is directly placed in the root directory of the project, it should be dependent like this:
+    //implementation project(':AUIShortVideoList')
+}
+

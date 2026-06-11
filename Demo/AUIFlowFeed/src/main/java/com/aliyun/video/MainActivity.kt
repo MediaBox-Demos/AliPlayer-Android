@@ -3,6 +3,7 @@ package com.aliyun.video
 import android.content.Intent
 import android.os.Bundle
 import android.view.WindowManager
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.aliyun.apsaravideo.videocommon.message.OpenVideoPlayPageEvent
 import com.aliyun.auiplayerserver.bean.VideoInfo
 import com.aliyun.apsaravideo.AppHomeWatcher
@@ -20,6 +21,7 @@ private const val TAG = "MainActivity"
 const val FROM_FLOAT_PLAY = "from_float_play"
 const val VIDEO_INFO = "video_info"
 
+@Route(path = "/flowfeed/main")
 class MainActivity : BaseActivity() {
     private lateinit var mViewBinding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,8 +39,8 @@ class MainActivity : BaseActivity() {
         initFragment()
     }
 
-    private fun initFragment(){
-        showFragment<RecommendFragment>(R.id.mFragmentContainer,null,RecommendFragment.TAG)
+    private fun initFragment() {
+        showFragment<RecommendFragment>(R.id.mFragmentContainer, null, RecommendFragment.TAG)
     }
 
     override fun onNewIntent(intent: Intent?) {
@@ -46,10 +48,9 @@ class MainActivity : BaseActivity() {
         setIntent(intent)
         getIntent()?.apply {
             val fromFloatPlay = getBooleanExtra(FROM_FLOAT_PLAY, false)
-            val videoInfo: VideoInfo? =
-                getParcelableExtra(
-                    VIDEO_INFO
-                )
+            val videoInfo: VideoInfo? = getParcelableExtra(
+                VIDEO_INFO
+            )
             val screenType = getIntExtra(AliyunPlayerSkinFragment.FULL_SCREEN, 0)
             val from = getIntExtra(AliyunPlayerSkinFragment.FROM_SOURCE, 0)
 
@@ -76,9 +77,7 @@ class MainActivity : BaseActivity() {
                     //进入播放详情页
                     // Go to the playback details page
                     showFragment<AliyunPlayerSkinFragment>(
-                        R.id.mFragmentContainer,
-                        bundle,
-                        NORMAL_HALF_SCREEN_FRAGMENT
+                        R.id.mFragmentContainer, bundle, NORMAL_HALF_SCREEN_FRAGMENT
                     )
                 }
             }

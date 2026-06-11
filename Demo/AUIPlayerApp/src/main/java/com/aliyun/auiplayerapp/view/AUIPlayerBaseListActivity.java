@@ -1,5 +1,6 @@
 package com.aliyun.auiplayerapp.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.alivc.player.settings.backstage.AUIBackstageActivity;
 import com.aliyun.auiplayerapp.R;
 
 import java.lang.ref.WeakReference;
@@ -24,7 +26,6 @@ import java.util.List;
 
 public abstract class AUIPlayerBaseListActivity extends AppCompatActivity {
 
-    private AUIPlayerActionBar mAUIPlayerActionBar;
     private RecyclerView mRecyclerView;
     private AVListAdapter mAVListAdapter;
 
@@ -39,26 +40,13 @@ public abstract class AUIPlayerBaseListActivity extends AppCompatActivity {
     }
 
     private void initBaseView() {
-        mAUIPlayerActionBar = findViewById(R.id.aui_player_base_title);
         mRecyclerView = findViewById(R.id.aui_player_base_main_recyclerView);
         mAVListAdapter = new AVListAdapter(this);
         mRecyclerView.setAdapter(mAVListAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mAUIPlayerActionBar.getLeftImageView().setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
-            }
-        });
     }
 
     private void initBaseData() {
-        mAUIPlayerActionBar.getTitleView().setText(getTitleResId());
-        if (showBackBtn()) {
-            mAUIPlayerActionBar.showLeftView();
-        } else {
-            mAUIPlayerActionBar.hideLeftView();
-        }
         mAVListAdapter.setData(createListData());
     }
 

@@ -31,4 +31,12 @@
         android:layout_marginRight="20dp"
         android:visibility="gone" />
 
+    <ImageView
+        android:id="@+id/aui_player_actionbar_setting"
+        android:src="@drawable/ic_player_setting"
+        android:paddingTop="@dimen/alivc_common_font_10"
+        android:layout_marginRight="@dimen/alivc_common_font_10"
+        android:layout_alignParentRight="true"
+        android:layout_width="@dimen/dp_40"
+        android:layout_height="@dimen/dp_40"/>
 </RelativeLayout>

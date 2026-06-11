@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="alivc_player_tip_last_video">Coming soon~</string>
+    <string name="Alibaba_clound_video_cloud_MediaBox">\@Alibaba clound video cloud MediaBox</string>
+    <string name="play_speed_content">speed fast forward in progress</string>
+    <string name="time_speed">Time Speed</string>
+    <string name="time_speed_0.5">0.5x</string>
+    <string name="time_speed_1.0">1.0x</string>
+    <string name="time_speed_1.5">1.5x</string>
+    <string name="time_speed_2.0">2.0x</string>
+    <string name="time_speed_3.0">3.0x</string>
+    <string name="video_track_info">Track Info</string>
+    <string name="advertisement_tip">Advertisement</string>
+    <string name="check_network_tip">Please check the network and try again～</string>
+    <string name="check_license_tip">Please check the license and try again～</string>
+</resources>

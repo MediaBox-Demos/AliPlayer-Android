@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.alivc.player.settings.backstage">
+
+    <application>
+        <activity
+            android:name=".CustomCaptureActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AUIBackstageActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+    </application>
+
+</manifest>

@@ -4,6 +4,8 @@
     <!--  aio  -->
     <string name="player_title">Player</string>
     <string name="player_feed_flow">Information Streaming</string>
+    <string name="player_scene_short_playlist_theater">Short Playlist Theater</string>
+    <string name="player_scene_short_playlist_feeds">Short Playlist Feeds</string>
     <string name="player_video_list">Immersive Playback</string>
     <string name="player_full_screen">Full-screen Playback</string>
     <string name="player_episode">Short Episode Playback</string>
@@ -12,6 +14,8 @@
 
     <!--    -->
     <string name="player_feed_flow_msg">Suitable for short video scenarios such as news broadcast and community activities.</string>
+    <string name="player_scene_short_playlist_theater_msg">Suitable for short playlist scenes</string>
+    <string name="player_scene_short_playlist_feeds_msg">Suitable for short playlist feeds scenes</string>
     <string name="player_feed_flow_function_msg">Vertical screen short video scene，Best practices for full screen second on</string>
     <string name="player_feed_flow_standard_msg">Vertical screen short video scene, standard implementation</string>
     <string name="player_video_list_msg">Suitable for short video scenarios in which you can switch among multiple videos.</string>

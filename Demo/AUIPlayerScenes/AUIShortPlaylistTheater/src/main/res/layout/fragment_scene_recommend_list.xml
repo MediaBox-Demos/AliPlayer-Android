@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <!--  添加短视频列表播放 View 组件  -->
+    <!--  Add Short Video List View Component  -->
+    <com.alivc.player.playerkits.shortvideolist.AUIShortVideoListView
+        android:id="@+id/v_short_playlist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.alivc.player.scenes.shortplaylist.view.AUIShortPlaylistDetailView
+        android:id="@+id/v_short_playlist_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="40dp" />
+</FrameLayout>

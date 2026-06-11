@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/short_playlist_home_detail"
+        android:title="@string/short_playlist_detail_name" />
+    <item
+        android:id="@+id/short_playlist_home_recommend"
+        android:title="@string/short_playlist_recommend_name" />
+</menu>

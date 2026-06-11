@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <!--  播放渲染视图  -->
+
+    <FrameLayout
+        android:id="@+id/fm_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <!--  封面首帧图  -->
+
+    <ImageView
+        android:id="@+id/iv_cover"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <com.alivc.player.playerkits.shortvideolist.business.playspeed.AUIVideoPlaySpeedDisplayView
+        android:id="@+id/v_play_speed_display"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="150dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/seekbar_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="41dp"
+        android:maxHeight="15dp"
+        android:orientation="horizontal"
+        android:paddingStart="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/seekbar_current_time"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+        <!--  进度条  -->
+        <androidx.appcompat.widget.AppCompatSeekBar
+            android:id="@+id/seekbar"
+            android:layout_width="267dp"
+            android:layout_height="match_parent"
+            android:progressDrawable="@drawable/bg_layer_seekbar"
+            android:thumb="@drawable/bg_shape_seekbar_thumb" />
+
+        <TextView
+            android:id="@+id/seekbar_end_time"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <!--  视频标题  -->
+    <TextView
+        android:id="@+id/tv_video_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="42dp"
+        android:layout_marginBottom="14dp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textColor="@color/gray"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@id/seekbar_container"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="aliyun video cloud, best video cloud" />
+
+    <!--  视频作者  -->
+    <TextView
+        android:id="@+id/tv_author"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/tv_video_title"
+        app:layout_constraintStart_toStartOf="@id/tv_video_title"
+        tools:text="mediabox" />
+
+    <!--  播放按钮  -->
+    <ImageView
+        android:id="@+id/iv_play"
+        android:layout_width="57dp"
+        android:layout_height="73dp"
+        android:src="@drawable/ic_video_list_play_icon"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--  返回按钮  -->
+    <ImageView
+        android:id="@+id/iv_back"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
+        android:padding="10dp"
+        android:src="@drawable/ic_topbar_return"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--  设置按钮  -->
+    <ImageView
+        android:id="@+id/iv_video_item_setting"
+        android:layout_width="66dp"
+        android:layout_height="66dp"
+        android:padding="20dp"
+        android:src="@drawable/ic_video_setting"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/iv_back" />
+
+    <!-- 拖拽浮动时间 -->
+    <com.alivc.player.playerkits.shortvideolist.business.floatinglayer.AUIVideoTimeFloatingLayer
+        android:id="@+id/ic_time_floate_layer_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/seekbar_container"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_video_title" />
+
+    <com.alivc.player.playerkits.shortvideolist.component.AUIShortVideoSettingPanel
+        android:id="@+id/v_aui_setting_panel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/fm_root" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="120dp"
+        android:maxHeight="15dp"
+        android:paddingRight="15dp"
+        android:orientation="horizontal"
+        android:gravity="right"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <!-- 点赞评论 -->
+        <com.alivc.player.playerkits.shortvideolist.component.AUIShortVideoInteractiveComponent
+            android:id="@+id/iv_interactive"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

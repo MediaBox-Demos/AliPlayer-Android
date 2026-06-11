@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="alivc_player_tip_last_video">敬请期待~</string>
+    <string name="Alibaba_clound_video_cloud_MediaBox">\@阿里云视频云 MediaBox</string>
+    <string name="play_speed_content">倍速快进中</string>
+    <string name="time_speed">视频倍速</string>
+    <string name="time_speed_0.5">0.5x</string>
+    <string name="time_speed_1.0">1.0x</string>
+    <string name="time_speed_1.5">1.5x</string>
+    <string name="time_speed_2.0">2.0x</string>
+    <string name="time_speed_3.0">3.0x</string>
+    <string name="video_track_info">视频质量</string>
+    <string name="advertisement_tip">广告</string>
+    <string name="check_network_tip">请检查网络后重试～</string>
+    <string name="check_license_tip">请确认您的license可正常使用～</string>
+</resources>

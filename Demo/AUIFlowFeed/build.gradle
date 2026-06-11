@@ -26,10 +26,12 @@ android {
 //        }
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [
-                        "room.schemaLocation"  : "$projectDir/schemas".toString(),
-                        "room.incremental"     : "true",
-                        "room.expandProjection": "true"]
+                arguments = [AROUTER_MODULE_NAME: 'flowfeed']
+            }
+        }
+        kapt {
+            arguments {
+                arg("AROUTER_MODULE_NAME", "flowfeed")
             }
         }
         ndk {
@@ -124,5 +126,10 @@ dependencies {
     implementation externalPlayerFull
     implementation externalAliyunOSS
     implementation externalGSON
+
+    // FIXME: 可能会导致集成问题
+    implementation externalARouter
+    annotationProcessor externalARouterCompiler
+    kapt externalARouterCompiler
 }
 

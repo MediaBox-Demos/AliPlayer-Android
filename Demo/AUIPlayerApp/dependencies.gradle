@@ -12,8 +12,14 @@ dependencies {
 
     implementation project(':AUIFlowFeed')
     implementation project(':AUIFullScreen')
-    implementation project(':AUIVideoList:AUIVideoFunctionList')
-    implementation project(':AUIVideoList:AUIVideoStandradList')
-    implementation project(':AUIVideoList:AUIVideoEpisode')
+
+    implementation project(':AUIPlayerScenes:AUISceneEntrance')
+    implementation project(':AUIPlayerScenes:AUIShortPlaylistTheater')
+    implementation project(':AUIPlayerScenes:AUIShortPlaylistFeeds')
+
+    implementation project(':AUIPlayerKits:AUIShortVideoList')
+
+    implementation project(':AUIPlayerSettings:AUIBackstage')
+
     implementation project(':AUIVideoPlayer:AUIVideoDemo')
 }

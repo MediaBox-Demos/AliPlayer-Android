@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.alivc.player.playerkits.shortvideolist">
+
+    <!--  Used for network features  -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!--  To check the network connection state of the device, you'll need to add the ACCESS_NETWORK_STATE permission.  -->
+    <!--  This permission does not require user consent at runtime, but needs to be declared in the app's AndroidManifest.xml.  -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- Used for accessing storage files  -->
+    <!--  Storage permissions  -->
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+
+    <application>
+        <activity
+            android:name="com.alivc.player.playerkits.shortvideolist.AUIShortVideoListActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+        <service
+            android:name=".smallwindow.FloatingWindowService"
+            android:enabled="true"
+            android:exported="false" />
+
+    </application>
+</manifest>

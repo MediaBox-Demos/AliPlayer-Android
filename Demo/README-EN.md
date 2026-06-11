@@ -38,20 +38,6 @@ After completing the configuration, please rebuild and run the project. The SDK 
 > **⚠️ Note**: If the license is not configured correctly, the player functionality may be limited
 > or unavailable.
 
-------
-
-## **Short Drama Demo Source Code Announcement**
-
-This version is the old Short Drama Scenario Demo source code released before October 2024. Alibaba Cloud officially released the latest version of the "Micro-Drama Scenario Multi-Instance Demo" in February 2025, which includes the complete source code. Compared with the old version, the new Demo features higher integration ease of use, smoother playback experience, and achieves the optimal balance in playback performance and user experience.
-
-The old version of the Short Drama Scenario Demo source code in the current directory is no longer updated or maintained. If you need to obtain the latest "Micro-Drama Scenario Multi-Instance Demo," please purchase the Professional Player License first and submit a ticket to contact us for the Demo source code. For details, see:
-
-[Integrate the Latest "Micro-Drama Scenario Multi-Instance Demo"](https://help.aliyun.com/zh/vod/use-cases/micro-drama-integrated-android-player-sdk)
-
-[Obtain the Player SDK Professional License](https://help.aliyun.com/zh/vod/developer-reference/obtain-the-player-sdk-license?spm=a2c4g.11186623.help-menu-search-29932.d_15)
-
-------
-
 ## **🚀 Quick Start**
 
 ### **🧰 Environment Requirements**

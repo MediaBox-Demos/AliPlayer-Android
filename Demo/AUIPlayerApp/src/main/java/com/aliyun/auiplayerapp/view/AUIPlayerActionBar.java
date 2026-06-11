@@ -15,7 +15,11 @@ public class AUIPlayerActionBar extends RelativeLayout {
     private ImageView mLeftImageView;
     private ImageView mRightImageView;
     private TextView mTitleView;
-
+    private ImageView mSetting;
+    public interface OnSettingClickListener{
+        void onsettingClick();
+    }
+    private OnSettingClickListener mOnSettingClickListener;
     public AUIPlayerActionBar(Context context) {
         this(context, null);
     }
@@ -34,7 +38,7 @@ public class AUIPlayerActionBar extends RelativeLayout {
         mLeftImageView = findViewById(R.id.aui_player_actionbar_left_image);
         mRightImageView = findViewById(R.id.aui_player_actionbar_right_image);
         mTitleView = findViewById(R.id.aui_player_actionbar_title);
-
+        mSetting = findViewById(R.id.aui_player_actionbar_setting);
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.av_actionbar);
         if (ta == null) {
             return;
@@ -67,6 +71,10 @@ public class AUIPlayerActionBar extends RelativeLayout {
         if (rightImage != 0) {
             mRightImageView.setImageResource(rightImage);
         }
+
+        mSetting.setOnClickListener(view->{
+            settingClick();
+        });
     }
 
     public void showLeftView() {
@@ -104,5 +112,12 @@ public class AUIPlayerActionBar extends RelativeLayout {
     public TextView getTitleView() {
         return mTitleView;
     }
-
+    private void settingClick(){
+        if (mOnSettingClickListener!=null){
+            mOnSettingClickListener.onsettingClick();
+        }
+    }
+    public void setOnsettingClickListener(OnSettingClickListener mOnSettingClickListener){
+        this.mOnSettingClickListener = mOnSettingClickListener;
+    }
 }

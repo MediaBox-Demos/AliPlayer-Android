@@ -1,0 +1,13 @@
+<resources>
+    <string name="backstage_title" translatable="false">Backstage Page</string>
+    <string name="clear_local_cache" translatable="false">Clear Local Cache</string>
+    <string name="clear_local_cache_done" translatable="false">Local cache has already been cleared!</string>
+    <string name="enable_cover_image_fallback_strategy" translatable="false">Enable cover image fallback strategy</string>
+    <string name="player_pool_capacity_three" translatable="false">Player pool capacity to three (default: two)</string>
+    <string name="player_pip_permission" translatable="false">开启悬浮窗权限</string>
+    <string name="pip_permission_message" translatable="false">为了更好的使用体验，请开启悬浮窗权限，这样您可以在其他应用上方观看视频。</string>
+    <string name="pip_permission_open" translatable="false">开启权限</string>
+    <string name="pip_permission_cancel" translatable="false">取消</string>
+    <string name="pip_permission_already_open" translatable="false">已经开启了悬浮窗权限</string>
+    <string name="pip_need_permission" translatable="false">需要悬浮窗权限才能使用此功能</string>
+</resources>

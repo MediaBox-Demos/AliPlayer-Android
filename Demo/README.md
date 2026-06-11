@@ -36,20 +36,6 @@ A demo project for Apsara Video Player SDK.
 
 > **⚠️ 注意**：若未正确配置 License，播放器功能将会受限或无法使用。
 
-----
-
-## **短剧Demo源码公告**
-
-该版本为 2024年10月前发布的旧版本短剧场景Demo源码，阿里云已于2025年2月正式发布最新版「微短剧场景化多实例Demo」，并包含完整源码。新版Demo相比旧版本，集成易用性更高，播放体验更加丝滑，在播放性能和体验上达到了最佳平衡。
-
-当前目录下的旧版短剧场景Demo源码已不再更新维护，若需获取最新版「微短剧场景化多实例Demo」，请先购买播放器专业版License，并提工单联系我们获取Demo源码，详见：
-
-[集成最新「微短剧场景化多实例Demo」](https://help.aliyun.com/zh/vod/use-cases/micro-drama-integrated-android-player-sdk)
-
-[播放器SDK专业版License获取](https://help.aliyun.com/zh/vod/developer-reference/obtain-the-player-sdk-license?spm=a2c4g.11186623.help-menu-search-29932.d_15)
-
-----
-
 ## **🚀 快速开始**
 
 ### **🧰 环境要求**

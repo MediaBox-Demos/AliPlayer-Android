@@ -11,6 +11,10 @@ include ':AUIFlowFeed'
 include ':AUIFullScreen'
 include ':AUIPlayerServer'
 
+include ':AUIPlayerScenes:AUISceneEntrance'
+include ':AUIPlayerScenes:AUIShortPlaylistTheater'
+include ':AUIPlayerScenes:AUIShortPlaylistFeeds'
+
 include ':AUIVideoCommon'
 include ':AUIVideoCommon:common'
 include ':AUIVideoCommon:database'
@@ -19,11 +23,9 @@ include ':AUIVideoCommon:skeleton'
 include ':AUIVideoCommon:AliyunPlayerBase'
 include ':AUIVideoCommon:AlivcPlayerTools'
 
-include ':AUIVideoList:AUIVideoListCommon'
-include ':AUIVideoList:AUIVideoFunctionList'
-include ':AUIVideoList:AUIVideoStandradList'
-include ':AUIVideoList:AUIVideoEpisode'
+include ':AUIPlayerKits:AUIShortVideoList'
 
+include ':AUIPlayerSettings:AUIBackstage'
 
 include ':AUIVideoPlayer:AUIVideoDemo'
 include ':AUIVideoPlayer:AUIVideoTools'

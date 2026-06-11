@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <!--  添加短视频列表播放 View 组件  -->
+    <!--  Add Short Video List View Component  -->
+    <com.alivc.player.playerkits.shortvideolist.AUIShortVideoListView
+        android:id="@+id/aui_video_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</FrameLayout>
