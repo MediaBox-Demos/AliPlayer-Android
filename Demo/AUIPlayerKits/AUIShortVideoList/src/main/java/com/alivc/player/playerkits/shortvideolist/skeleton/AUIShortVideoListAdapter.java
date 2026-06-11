@@ -142,10 +142,6 @@ public class AUIShortVideoListAdapter extends AUIVideoListAdapter {
             }
             SLog.i(this, "VIEW-ATTACH", holder.getAdapterPosition(), holder, currentPositonSet);
             bindVideoPlayer((AUIShortVideoListViewHolder) holder);
-
-            if (holder.getAdapterPosition() == getCurrentList().size() - 1) {
-                setLoop((AUIVideoListViewHolder) holder, true);
-            }
         }
     }
 

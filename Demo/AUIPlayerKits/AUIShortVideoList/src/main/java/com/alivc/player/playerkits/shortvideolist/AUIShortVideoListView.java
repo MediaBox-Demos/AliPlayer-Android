@@ -416,8 +416,26 @@ public class AUIShortVideoListView extends FrameLayout implements OnViewHolderIt
 
     @Override
     public void onCompletion(int position) {
+        // 播放完成后，自动播放下一集
         if (position < mAUIVideoListAdapter.getItemCount() && mAutoPlayNext) {
             mRecyclerView.smoothScrollToPosition(position + 1);
+        }
+
+        // Note:
+        // 处理列表最后一个视频播放完成的场景
+        // 如下：进行循环播放，可在 onCompletion 回调触发后，对viewHolder重新绑定
+        //
+        // 原因说明：播放器播放完成后会被销毁，
+        // 重新绑定可确保播放器恢复到可交互状态，以此达到循环播放的效果
+        //
+        // 相关拓展：
+        // 如果业务方希望在「列表最后一个视频播放完成」时进行业务操作，
+        // 可在该位置进行业务逻辑的自定义
+        if (position == mAUIVideoListAdapter.getItemCount() - 1) {
+            AUIVideoListViewHolder viewHolder = getViewHolderByPosition(position);
+            if (viewHolder != null) {
+                rebindVideoPlayer(viewHolder);
+            }
         }
     }
 
@@ -440,6 +458,7 @@ public class AUIShortVideoListView extends FrameLayout implements OnViewHolderIt
     }
 
     public void rebindVideoPlayer(AUIVideoListViewHolder holder) {
+        unbindVideoPlayer(holder);
         ((AUIShortVideoListAdapter) mAUIVideoListAdapter).rebindVideoPlayer(holder);
     }
 
