@@ -198,6 +198,9 @@ public class MultiResolutionActivity extends AppCompatActivity {
      */
     private void cleanupPlayer() {
         if (null != mAliPlayer) {
+            // 解绑播放器视图
+            mAliPlayer.setDisplayView(null);
+
             // 4.1 停止播放器  stop
             mAliPlayer.stop();
 

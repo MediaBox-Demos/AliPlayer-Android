@@ -232,6 +232,9 @@ public class FloatWindowService extends Service {
             windowManager.removeView(floatingView);
         }
         if (mAliPlayer != null) {
+            // 解绑播放器视图
+            mAliPlayer.setDisplayView(null);
+
             // 停止播放器播放
             // mAliPlayer.stop();
 

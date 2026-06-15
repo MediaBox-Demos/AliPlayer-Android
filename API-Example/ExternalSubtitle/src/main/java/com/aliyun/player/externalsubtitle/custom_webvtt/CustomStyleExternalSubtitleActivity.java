@@ -265,6 +265,9 @@ public class CustomStyleExternalSubtitleActivity extends AppCompatActivity {
      */
     private void cleanupPlayer() {
         if (mAliPlayer != null) {
+            // 解绑播放器视图
+            mAliPlayer.setDisplayView(null);
+
             mAliPlayer.stop();
             mAliPlayer.release();
             mAliPlayer = null;
