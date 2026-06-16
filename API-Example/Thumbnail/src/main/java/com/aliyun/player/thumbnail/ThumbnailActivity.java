@@ -303,6 +303,9 @@ public class ThumbnailActivity extends AppCompatActivity {
      */
     private void cleanupPlayer() {
         if (mAliPlayer != null) {
+            // 解绑播放器视图
+            mAliPlayer.setDisplayView(null);
+
             // 8.1 停止播放
             mAliPlayer.stop();
 
