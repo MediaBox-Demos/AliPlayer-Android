@@ -126,10 +126,8 @@ public final class Constants {
         public static final String EXT_SUBTITLE_VTT = "https://alivc-demo-cms.alicdn.com/versionProduct/resources/API-Example/vtt/E19467B22A4F4286B462C0540F57CF46-3-3.vtt";
 
         // URL of the sample thumbnail video file
-        public static final String THUMBNAIL_VIDEO_URL = "https://alivc-demo-vod.aliyuncs.com/sv/5f2e5b7f-191dbfe2558/5f2e5b7f-191dbfe2558.mp4";
-
-        // URL of the thumbnail file
-        public static final String THUMBNAIL_URL = "https://llk-beijng.oss-cn-beijing.aliyuncs.com/vod-e3ddeb/005d826e483171f0bfb316b5feac0102/snapshots/webvtt/15483839-19768706593-1833-2022-301-08227.vtt";
+        public static final String THUMBNAIL_VIDEO_VID = "80b6301d909371f1aa965017f0e80402";
+        public static final String THUMBNAIL_VIDEO_AUTH = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6ImFwcC0xMDAwMDAwIiwidmlkZW9JZCI6IjgwYjYzMDFkOTA5MzcxZjFhYTk2NTAxN2YwZTgwNDAyIiwiY3VycmVudFRpbWVTdGFtcCI6MTc4NTkwOTgxMTY4MiwiZXhwaXJlVGltZVN0YW1wIjoxOTQzNTg5ODExNjgyLCJyZWdpb25JZCI6ImNuLXNoYW5naGFpIiwicGxheUNvbnRlbnRJbmZvIjp7InN0cmVhbVR5cGUiOiJ2aWRlbyIsImFwaVZlcnNpb24iOiIxLjAuMiIsImF1dGhUaW1lb3V0IjoyODAwMH19.gQN7Iq7ufZXIUbJ8-JAfPI5NmDGIIfZhWUCSXFafMT0";
 
         // URL of the MULTI_RESOLUTION
         public static final String MULTI_RESOLUTION_URL = "https://alivc-demo-vod.aliyuncs.com/d055a20270a671ef9d064531858c0102/cb2edb31f9674fb880462d8068b4cfd5.m3u8";
