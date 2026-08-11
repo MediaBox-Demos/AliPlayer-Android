@@ -8,16 +8,37 @@ Language: 中文简体 | [English](README-EN.md)
 
 ## **📌 简介**
 
-AliPlayerKit 是阿里云面向视频业务推出的 **播放器含 UI 集成方案**，提供**低代码、可扩展的播放器 UI 组件**与**场景化解决方案**。通过对播放器能力和 UI 交互的高度封装，帮助客户以极低的接入成本快速完成 App 播放能力建设，无需直接调用底层播放器 API，也无需自行实现复杂的播放器 UI。
+**AliPlayerKit** 是阿里云面向视频业务推出的 **播放器含 UI 集成方案**，提供**低代码、可扩展的播放器 UI 组件**与**场景化解决方案**。
+
+<p align="center">
+  <img
+    src="https://alivc-demo-cms.alicdn.com/versionProduct/installPackage/AliPlayerKit/playerkit-ui-preview.png"
+    alt="AliPlayerKit UI 组件预览"
+    width="100%"
+  />
+</p>
+
+<p align="center">
+  <sub>开箱即用的播放器 UI，支持多种播放形态与交互配置</sub>
+</p>
+
+通过对播放器能力和 UI 交互的高度封装，帮助客户以极低的接入成本快速完成 App 播放能力建设，无需直接调用底层播放器 API，也无需自行实现复杂的播放器 UI。
 
 ---
 
 ## **✨ 核心特性**
 
-- 🚀 **低代码接入** - 极简 API 设计，几行代码即可完成播放器集成
-- 🎨 **丰富的 UI 组件** - 提供开箱即用的播放器 UI，支持自定义主题
-- 📱 **场景化方案** - 内置短视频、信息流、点播等常见播放场景
-- 🔧 **灵活可扩展** - 支持自定义 UI 和功能扩展
+- 🚀 **低代码接入** — 无需直接调用底层播放器 API，几行代码即可完成视频播放能力接入。
+- 🎨 **开箱即用的 UI 组件** — 提供可配置的播放器 UI 组件，覆盖基础播放与常见交互能力。
+- 📱 **场景化解决方案** — 内置中长视频、短视频、直播、播放列表等典型业务场景，快速搭建完整播放体验。
+- 🔧 **高度可扩展的架构设计** — 插槽系统支持 UI 自由组合，策略系统支持业务逻辑灵活扩展。
+- 🌐 **跨平台统一架构** — 各端共享相同的设计理念与接口语义，降低多端接入与维护成本。
+
+| 平台 | 说明 | 源码 | 文档 |
+|------|------|------|------|
+| **Android** | 原生 Android 播放器 UI 组件与场景化解决方案 | [PlayerKit-Android](https://github.com/aliyun/PlayerKit-Android) | [在线文档](https://aliyun.github.io/PlayerKit-Android/) |
+| **iOS** | 原生 iOS 播放器 UI 组件与场景化解决方案 | [PlayerKit-iOS](https://github.com/aliyun/PlayerKit-iOS) | [在线文档](https://aliyun.github.io/PlayerKit-iOS/) |
+| **Flutter** | 跨平台 Flutter 播放器 Widget 封装 | [player_widget](https://github.com/aliyun/player_widget) | [在线文档](https://aliyun.github.io/player_widget/) |
 
 ------
 

@@ -8,16 +8,37 @@ Language: [中文简体](README.md) | English
 
 ## **📌 Overview**
 
-AliPlayerKit is a **player with UI integration solution** launched by Alibaba Cloud for video business, providing **low-code, extensible player UI components** and **scenario-based solutions**. Through high-level encapsulation of player capabilities and UI interactions, it helps customers quickly complete app playback capabilities with minimal integration cost, without the need to directly call underlying player APIs or implement complex player UI.
+**AliPlayerKit** is Alibaba Cloud's **player UI integration solution** for video applications, offering **low-code, extensible player UI components** and **scenario-based solutions**.
+
+<p align="center">
+  <img
+    src="https://alivc-demo-cms.alicdn.com/versionProduct/installPackage/AliPlayerKit/playerkit-ui-preview.png"
+    alt="AliPlayerKit UI preview"
+    width="100%"
+  />
+</p>
+
+<p align="center">
+  <sub>Ready-to-use player UI components for multiple playback scenarios</sub>
+</p>
+
+By encapsulating player capabilities and UI interactions, it enables rapid development of app playback features with minimal integration effort — no need to call underlying player APIs directly or build complex player UIs from scratch.
 
 ---
 
 ## **✨ Core Features**
 
-- 🚀 **Low-code Integration** - Minimal API design, complete player integration with just a few lines of code
-- 🎨 **Rich UI Components** - Ready-to-use player UI with customizable themes
-- 📱 **Scenario-based Solutions** - Built-in common playback scenarios such as short video, feed, and VOD
-- 🔧 **Flexible & Extensible** - Support for custom UI and feature extensions
+- 🚀 **Low-code Integration** — Integrate video playback capabilities with just a few lines of code, without directly calling low-level player APIs.
+- 🎨 **Out-of-the-Box UI Components** — Configurable player UI components covering basic playback and common interaction capabilities.
+- 📱 **Scenario-based Solutions** — Built-in typical business scenarios such as medium/long video, short video, live streaming, and playlists, enabling rapid construction of complete playback experiences.
+- 🔧 **Highly Extensible Architecture** — The slot system supports flexible UI composition, while the strategy system supports flexible extension of business logic.
+- 🌐 **Unified Cross-platform Architecture** — Shared design philosophy and API semantics across platforms, reducing multi-platform integration and maintenance costs.
+
+| Platform | Description | Source | Docs |
+|----------|-------------|--------|------|
+| **Android** | Native Android player UI components & scenario solutions | [PlayerKit-Android](https://github.com/aliyun/PlayerKit-Android) | [Online Docs](https://aliyun.github.io/PlayerKit-Android/) |
+| **iOS** | Native iOS player UI components & scenario solutions | [PlayerKit-iOS](https://github.com/aliyun/PlayerKit-iOS) | [Online Docs](https://aliyun.github.io/PlayerKit-iOS/) |
+| **Flutter** | Cross-platform Flutter player widget | [player_widget](https://github.com/aliyun/player_widget) | [Online Docs](https://aliyun.github.io/player_widget/) |
 
 ------
 
