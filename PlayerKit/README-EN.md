@@ -42,6 +42,34 @@ By encapsulating player capabilities and UI interactions, it enables rapid devel
 
 ------
 
+## **🏗️ Architecture Overview**
+
+Architecturally, **AliPlayerKit sits on top of the player core**, providing a unified UI component system and playback scenario abstraction that carries the shared capabilities of different playback businesses:
+
+```
+┌──────────────────────────────────────────────────┐
+│           Application Layer (Your App)           │
+├──────────────────────────────────────────────────┤
+│      playerkit-scenes (Scenario Solutions)       │
+│  Mid/Long Video / Short Video / Live / Playlist  │
+├──────────────────────────────────────────────────┤
+│       playerkit (Core UI Component Layer)        │
+│        AliPlayerView / Controller / Model        │
+│       Slot / Strategy / Event / Lifecycle        │
+├──────────────────────────────────────────────────┤
+│           AliPlayer SDK (Player Core)            │
+└──────────────────────────────────────────────────┘
+```
+
+AliPlayerKit provides two integration levels:
+
+| Level | Module | Description | Use Case |
+|-------|--------|-------------|----------|
+| **Component** | `playerkit` | Core UI components: player view, controller, data model | Custom UI or flexible playback control |
+| **Scene** | `playerkit-scenes` | Complete scenario solutions with UI and business logic | Quickly implement standard playback scenarios |
+
+------
+
 ## **🔗 Related Links**
 
 - 📘 **Online Documentation**: [AliPlayerKit Android Documentation](https://aliyun.github.io/PlayerKit-Android/)
