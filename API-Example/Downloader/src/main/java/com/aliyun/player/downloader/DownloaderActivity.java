@@ -1,5 +1,6 @@
 package com.aliyun.player.downloader;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,18 +13,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.aliyun.downloader.AliDownloaderFactory;
 import com.aliyun.downloader.AliMediaDownloader;
-import com.aliyun.player.AliPlayer;
 import com.aliyun.player.bean.ErrorInfo;
 import com.aliyun.player.common.Constants;
-import com.aliyun.player.common.bean.PlayAuthBean;
-import com.aliyun.player.common.network.HttpClientUtils;
 import com.aliyun.player.nativeclass.MediaInfo;
 import com.aliyun.player.nativeclass.TrackInfo;
 import com.aliyun.player.source.VidAuth;
-import com.google.gson.Gson;
-import com.google.gson.JsonSyntaxException;
+import com.aliyun.private_service.PrivateService;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.InputStream;
 import java.util.List;
 
 /**
@@ -35,51 +34,42 @@ import java.util.List;
  * <p>
  * ==================== 下载器 API 调用步骤 ====================
  * Step 1: 初始化组件
- * - 初始化私有服务和UI组件
- * - 获取应用目录
- * Step 2: 网络请求获取playAuth
- * - 调用工具类进行网络请求
- * - VidAuth 获取vid和网络请求的playAuth
- * - 下载器调用 prepare() 方法
+ * - 初始化私有服务（安全下载需要配置 encryptedApp.dat）
+ * - 获取应用目录作为下载保存路径
  * <p>
- * Step 3: 初始化UI组件
+ * Step 2: 初始化UI组件
  * - 绑定下载按钮
  * - 绑定下载项列表
  * <p>
- * Step 4: 设置下载器
+ * Step 3: 设置下载器
  * - 使用 AliDownloaderFactory.create() 创建下载器
  * - 配置下载保存路径
  * - 设置下载器各种监听器
  * <p>
- * Step 5: 下载器准备成功 & 获取下载源
- * - 通过网络请求获取播放授权
- * - 准备下载源并获取可下载轨道列表
+ * Step 4: 准备下载源 & 获取下载轨道
+ * - 构造 VidAuth 并设置 vid 与 playAuth
+ * - 调用下载器 prepare() 获取可下载轨道列表
  * - 展示下载选项供用户选择
  * <p>
- * Step 6: 播放视频
- * - 本模块只提供了下载API 示例，您可以参考文档自行实现播放功能
+ * Step 5: 资源清理
+ * - 停止并释放下载器实例
+ * - 清空相关引用，避免内存泄漏
+ * <p>
+ * 播放下载后的视频：本模块仅提供下载 API 示例，播放功能可参考文档自行实现。
  * // 下载完成后获取视频文件的绝对路径
  * String path = mAliDownloader.getFilePath();
- * // 通过点播UrlSource方式设置绝对路径进行播放。
+ * // 通过点播 UrlSource 方式设置绝对路径进行播放
  * UrlSource urlSource = new UrlSource();
- * UrlSource.setUri("播放地址");//设置下载视频的绝对路径。
+ * urlSource.setUri("播放地址"); // 设置下载视频的绝对路径
  * aliPlayer.setDataSource(urlSource);
  * aliPlayer.prepare();
  * aliPlayer.start();
  * 参考文档 <a href="https://help.aliyun.com/zh/vod/developer-reference/advanced-features">安全下载</a>
- * <p>
- * Step 7: 资源清理
- * - 停止并释放播放器实例
- * - 停止并释放下载器实例
- * - 清空相关引用，避免内存泄漏
  */
 public class DownloaderActivity extends AppCompatActivity {
     private static final String TAG = "DownLoadActivity";
     // 下载存储地址
     private String mDownloadPath = "";
-
-    // 播放器相关
-    private AliPlayer mAliPlayer;
 
     // 下载器相关
     private AliMediaDownloader mAliDownloader;
@@ -100,22 +90,25 @@ public class DownloaderActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
+        initSafeDownloader();
+
         // Step 1: 初始化组件
         initComponents();
 
-        // Step 2: 网络请求获取playAuth
-        requestPlayAuth(Constants.DataSource.REQUEST_PLAY_AUTH_URL + Constants.DataSource.DOWNLOAD_VID);
-
-        // Step 3: 初始化UI组件
+        // Step 2: 初始化UI组件
         initViews();
 
-        // Step 4: 设置下载器
+        // Step 3: 设置下载器
         setupDownloader();
+
+        // Step 4: 准备下载源
+        prepareDownloaderSource(Constants.DataSource.SAMPLE_VID, Constants.DataSource.SAMPLE_PLAY_AUTH);
+
     }
 
     @Override
     protected void onDestroy() {
-        // Step 7: 资源清理
+        // Step 5: 资源清理
         cleanupResources();
 
         super.onDestroy();
@@ -148,70 +141,62 @@ public class DownloaderActivity extends AppCompatActivity {
         Log.d(TAG, "[Step 1] 获取存储应用目录");
     }
 
-    /**
-     * Step 2: 网络请求获取playAuth
-     * 简单的网络请求 实际项目中请替换为您项目中的网络请求工具
-     * @param url playAuth请求接口
-     * url 换自己的 API 域名业务进行业务请求
-     */
-    private void requestPlayAuth(String url) {
-        // 简单的网络请求工具 实际项目中请替换为您项目中的网络请求工具
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                // 网络请求，获取playAuth
-                String responseData = HttpClientUtils.getContentFromURI(url);
-                if (responseData == null) {
-                    showToast("网络请求失败");
-                    return;
-                }
 
-                Gson gson = new Gson();
-                try {
-                    PlayAuthBean playAuthBean = gson.fromJson(responseData, PlayAuthBean.class);
-                    String playAuth = playAuthBean.getData().getPlayAuth();
-                    // 准备下载资源
-                    prepareDownloaderSource(Constants.DataSource.DOWNLOAD_VID, playAuth);
-                } catch (JsonSyntaxException e) {
-                    e.printStackTrace();
-                    showToast("JSON 解析错误" + e.getMessage());
-                } catch (IllegalStateException e) {
-                    e.printStackTrace();
-                    showToast("不匹配的类型" + e.getMessage());
-                }
-            }
-        }).start();
+    private void initSafeDownloader() {
+        byte[] bytes = getAssetsFileBytes(this);
+        PrivateService.initService(this, bytes);
     }
 
+    private byte[] getAssetsFileBytes(Context context) {
+        try {
+            InputStream inputStream = context.getAssets().open("encryptedApp.dat");
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+
+            byte[] buffer = new byte[1024];
+            int length;
+
+            while ((length = inputStream.read(buffer)) != -1) {
+                byteArrayOutputStream.write(buffer, 0, length);
+            }
+
+            inputStream.close();
+            return byteArrayOutputStream.toByteArray();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+
     /**
-     * Step 3: 初始化视图组件
+     * Step 2: 初始化视图组件
      */
     private void initViews() {
         mRecyclerView = findViewById(R.id.recycler_view);
         mDownloadStart = findViewById(R.id.download_start);
-        Log.d(TAG, "[Step 3.1] 注册视图组件");
+        Log.d(TAG, "[Step 2.1] 注册视图组件");
     }
 
     /**
-     * Step 4: 设置下载器
+     * Step 3: 设置下载器
      */
     private void setupDownloader() {
-        // 4.1 创建下载器实例
+        // 3.1 创建下载器实例
         mAliDownloader = AliDownloaderFactory.create(getApplicationContext());
-        Log.d(TAG, "[Step 4.1] 创建下载器实例");
+        Log.d(TAG, "[Step 3.1] 创建下载器实例");
         if (mAliDownloader == null) {
             Log.e(TAG, "下载器创建失败");
             return;
         }
 
-        // 4.2 配置下载保存路径
+        // 3.2 配置下载保存路径
         mAliDownloader.setSaveDir(mDownloadPath);
-        Log.d(TAG, "[Step 4.2] 配置下载保存路径: " + mDownloadPath);
+        Log.d(TAG, "[Step 3.2] 配置下载保存路径: " + mDownloadPath);
 
-        // 4.3 设置下载器监听
+        // 3.3 设置下载器监听
         setDownloaderListeners();
 
-        Log.d(TAG, "[Step 4.3] 下载器设置完成");
+        Log.d(TAG, "[Step 3.3] 下载器设置完成");
     }
 
     /**
@@ -224,7 +209,7 @@ public class DownloaderActivity extends AppCompatActivity {
         mAliDownloader.setOnPreparedListener(new AliMediaDownloader.OnPreparedListener() {
             @Override
             public void onPrepared(MediaInfo mediaInfo) {
-                Log.d(TAG, "[Step 4.3] 准备下载器成功");
+                Log.d(TAG, "[Step 4] 下载器准备成功");
 
                 // 下载器准备成功 & 获取下载源
                 onDownloaderPreparedSuccess(mediaInfo);
@@ -268,7 +253,7 @@ public class DownloaderActivity extends AppCompatActivity {
     }
 
     /**
-     * Step 5: 下载器准备成功 & 获取下载源
+     * Step 4: 下载器准备成功 & 获取下载源
      */
     private void onDownloaderPreparedSuccess(MediaInfo mediaInfo) {
         if (mediaInfo == null) {
@@ -351,7 +336,7 @@ public class DownloaderActivity extends AppCompatActivity {
         vidAuth.setPlayAuth(playAuth);
         mAliDownloader.prepare(vidAuth);
 
-        Log.d(TAG, "[Step 1.5] 准备下载源");
+        Log.d(TAG, "[Step 4] 准备下载源");
     }
 
     /**
@@ -377,24 +362,17 @@ public class DownloaderActivity extends AppCompatActivity {
     }
 
     /**
-     * Step 7: 资源清理
+     * Step 5: 资源清理
      */
     private void cleanupResources() {
-        // 6.1 清理播放器资源
-        if (mAliPlayer != null) {
-            mAliPlayer.stop();
-            mAliPlayer.release();
-            mAliPlayer = null;
-        }
-
-        // 6.2 清理下载器资源
+        // 5.1 清理下载器资源
         stopAndReleaseDownloader();
         mAliDownloader = null;
 
-        // 6.3 清理其他引用
+        // 5.2 清理其他引用
         mAdapter = null;
 
-        Log.d(TAG, "[Step 6] 资源清理完成");
+        Log.d(TAG, "[Step 5] 资源清理完成");
     }
 
     /**
