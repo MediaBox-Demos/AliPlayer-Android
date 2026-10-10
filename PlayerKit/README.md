@@ -12,7 +12,7 @@ Language: 中文简体 | [English](README-EN.md)
 
 <p align="center">
   <img
-    src="https://alivc-demo-cms.alicdn.com/versionProduct/installPackage/AliPlayerKit/playerkit-ui-preview.png"
+    src="./_media/playerkit-ui-preview.png"
     alt="AliPlayerKit UI 组件预览"
     width="100%"
   />
